@@ -13,7 +13,8 @@ module.exports = function(app) {
 
   app.get("/post", function(req, res) {
     res.render("post", {
-      msg: "Post here!"
+      msg: "Post here!",
+      user: "User Profile Info"
     });
   });
   // Load example page and pass in an example by id
