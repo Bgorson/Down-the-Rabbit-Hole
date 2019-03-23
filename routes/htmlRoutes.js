@@ -13,7 +13,8 @@ module.exports = function(app) {
 
   app.get("/post", function(req, res) {
     res.render("post", {
-      msg: "Post here!"
+      msg: "Post here!",
+      user: "User Profile Info"
     });
   });
   // Load all posts
@@ -24,14 +25,20 @@ module.exports = function(app) {
       });
     });
   });
-  // Load example page and pass in an example by id
-  app.get("/example", function(req, res) {
-    db.Example.findAll({}).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  // Comments
+  app.get("/comment", function(req, res) {
+    db.Post.findAll({
+      where: {
+        id: 3
+      }
+    }).then(function(result){
+      console.log("this is my result" + result[0].description)
+      res.render("comment", {
+        msg: "comment!",
+        post: result[0].description
       });
     });
-  });
+  })
 
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {

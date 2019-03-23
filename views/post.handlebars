@@ -2,19 +2,23 @@
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
+        <div class = "userProfile">
+          <button class ="btn btn-primary float-right">{{user}}</button> 
+
+        </div>
         <h1>{{msg}}</h1>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
-            <label for="example-text">Title</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
+            <label for="post-text">Title</label>
+            <input type="text" id="post-text" class="form-control" aria-describedby="post-text" placeholder="Enter post Text">
           </div>
           <div class="form-group">
-            <label for="example-description">Body</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
+            <label for="post-description">Body</label>
+            <textarea class="form-control" id="post-description" aria-describedby="post-description" placeholder="Enter post Description"></textarea>
           </div>
             <div class="form-group">
-            <label for="example-category">Category</label>
-            <input type="text" id="example-category" class="form-control" aria-describedby="example-text" placeholder="Enter Category">
+            <label for="post-category">Category</label>
+            <input type="text" id="post-category" class="form-control" aria-describedby="post-text" placeholder="Enter Category">
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
@@ -25,4 +29,4 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<script src="/js/post.js"></script>
