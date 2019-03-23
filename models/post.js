@@ -5,6 +5,8 @@ module.exports = function(sequelize, DataTypes) {
     category: DataTypes.TEXT
   });
   
+// ENUMS- allows for only some acceptable options, not whatever
+
   Post.associate = function(models) {
     Post.belongsTo(models.User, {
       foreignKey: {
