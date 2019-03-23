@@ -1,3 +1,11 @@
 .list-group-item {
   line-height: 2.5;
 }
+img {
+  height: 50px;
+  width: 50px;
+}
+
+.navbar-brand {
+  font-family: 'Barrio', cursive;
+}
