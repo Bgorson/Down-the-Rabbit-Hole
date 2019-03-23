@@ -1,15 +1,6 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
-  app.get("/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPosts) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbPosts
-      });
-    });
-  });
   app.get("/post", function(req, res) {
     res.render("post", {
       msg: "Post here!",
@@ -17,7 +8,7 @@ module.exports = function(app) {
     });
   });
   // Load all posts
-  app.get("/posts", function(req, res) {
+  app.get("/", function(req, res) {
     db.Post.findAll({}).then(function(dbPosts) {
       res.render("display-posts", {
         posts: dbPosts

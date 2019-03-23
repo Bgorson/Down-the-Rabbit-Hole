@@ -1,14 +1,7 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/examples", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
-    });
-  });
 
-  // Create a new example
 //route for making new posts
   app.post("/api/post", function(req, res){
     console.log("hitting post route")
@@ -22,6 +15,7 @@ module.exports = function(app) {
       res.json(comment);
     });
   });
+
   app.get("/api/posts/:id", function(req, res) {
     db.Post.findAll({
       where: {

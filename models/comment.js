@@ -1,7 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
     text: DataTypes.STRING,
-    topic: DataTypes.INTEGER,
   });
+
+  Comment.associate = function(models) {
+    Comment.belongsTo(models.Post, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Comment;
 };
