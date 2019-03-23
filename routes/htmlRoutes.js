@@ -16,6 +16,23 @@ module.exports = function(app) {
       msg: "Post here!"
     });
   });
+  // Load all posts
+  app.get("/posts", function(req, res) {
+    db.Example.findAll({}).then(function(dbExample) {
+      res.render("display-posts", {
+        posts: dbExample
+      });
+    });
+  });
+  // Load example page and pass in an example by id
+  app.get("/example", function(req, res) {
+    db.Example.findAll({}).then(function(dbExample) {
+      res.render("example", {
+        example: dbExample
+      });
+    });
+  });
+
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
