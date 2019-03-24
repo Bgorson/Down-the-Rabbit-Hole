@@ -11,20 +11,21 @@ module.exports = function(app) {
       user: "User Profile Info"
     });
   });
-  app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.sendFile(path.join(__dirname, "../test/test.html"));
-  });
+  // app.get("/", function(req, res) {
+  //   // If the user already has an account send them to the members page
+  //   if (req.user) {
+  //     res.redirect("/members");
+  //   }
+  //   res.sendFile(path.join(__dirname, "../test/test.html"));
+  // });
 
   app.get("/login", function(req, res) {
+    console.log("hitting login route")
     // If the user already has an account send them to the members page
     if (req.user) {
       res.redirect("/members");
     }
-    res.sendFile(path.join(__dirname, "../public/login.html"));
+    res.render("login")
   });
 
   // Here we've add our isAuthenticated middleware to this route.
@@ -33,10 +34,18 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/members.html"));
   });
 
+  app.get("/create",function(req,res){
+    console.log("creating account")
+    res.render("createAccount")
+
+
+  })
+
+
   // Load all posts
-  app.get("/posts", function(req, res) {
+  app.get("/", function(req, res) {
     db.Post.findAll({}).then(function(dbPosts) {
-      res.render("dnodeisplay-posts", {
+      res.render("display-posts", {
         posts: dbPosts
       });
     });

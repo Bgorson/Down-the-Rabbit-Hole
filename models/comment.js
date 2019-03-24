@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   Comment.associate = function(models) {
     Comment.belongsTo(models.Post, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
