@@ -3,6 +3,7 @@ var $text = $("#post-text");
 var $description = $("#post-description");
 var $category = $("#post-category");
 var userID;
+var postID;
 //pending functionality of linking to user profile
 $.get("/api/user_data").then(function(data) {
   userID = data.id
@@ -37,11 +38,15 @@ $("#submit").click(function(event) {
     return;
   }
   API.newPost(post).then(function(){
+
     console.log("posted")
+    location.href= "/"
+
   })
   $text.val("");
   $description.val("");
   $category.val("");
+
 });
 
 //add a redirect to main page or completed post page
