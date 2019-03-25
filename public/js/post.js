@@ -2,9 +2,11 @@
 var $text = $("#post-text");
 var $description = $("#post-description");
 var $category = $("#post-category");
+var userID;
 //pending functionality of linking to user profile
-$(".userProfile").click(function() {
-  alert("Clicked Add link to user profile here");
+$.get("/api/user_data").then(function(data) {
+  userID = data.id
+  $(".member-name").text(data.email);
 });
 //establish post route logic
 var API = {
@@ -22,11 +24,12 @@ var API = {
 //on submit- make post object and put in SQL
 $("#submit").click(function(event) {
   event.preventDefault();
-  
+  console.log(userID)
   var post = {
     text: $text.val().trim(),
     description: $description.val().trim(),
-    category: $category.val().trim()
+    category: $category.val().trim(),
+    UserId: userID
   };
   
   if (!(post.text && post.description)) {

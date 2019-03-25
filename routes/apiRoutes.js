@@ -3,19 +3,23 @@ var passport = require("../config/passport");
 module.exports = function(app) {
 
 //route for making new posts
+//when making a post, run create and do sequelize 
   app.post("/api/post", function(req, res){
     console.log("hitting post route")
     db.Post.create(req.body).then(function(post) {
       res.json(post);
     });
   });
-  app.post("/api/comment/:post", function(req, res){
-    console.log("commenting on post number: " + req.params.post)
-    db.Comment.create(req.body).then(function(comment) {
-      res.json(comment);
-    });
-  });
 
+  //route for making a new comment
+  // app.post("/api/comment/:post", function(req, res){
+  //   console.log("commenting on post number: " + req.params.post)
+  //   db.Comment.create(req.body).then(function(comment) {
+  //     res.json(comment);
+  //   });
+  // });
+
+// For selecting a specific post based off ID number. Send data back to the page
   app.get("/api/posts/:id", function(req, res) {
     db.Post.findAll({
       where: {
@@ -31,7 +35,7 @@ module.exports = function(app) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
     // So we're sending the user back the route to the members page because the redirect will happen on the front end
     // They won't get this or even be able to access this page if they aren't authed
-    res.json("/members");
+    res.json("/");
   });
 
   // Route for signing up a user. The user's password is automatically hashed and stored securely thanks to
@@ -72,18 +76,10 @@ module.exports = function(app) {
       });
     }
   });
-
-
   // Delete an example by id
-  app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-
-
-
-
-
+  // app.delete("/api/examples/:id", function(req, res) {
+  //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+  //     res.json(dbExample);
+  //   });
+  // });
 };

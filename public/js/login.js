@@ -1,15 +1,20 @@
-$(document).ready(function() {
+document.getElementById("createAccount").onclick = function(){
+  location.href= "/create"
+}
     // Getting references to our form and inputs
-    var loginForm = $("form.login");
-    var emailInput = $("input#email-input");
-    var passwordInput = $("input#password-input");
-  
+
+
     // When the form is submitted, we validate there's an email and password entered
-    loginForm.on("submit", function(event) {
+    $("#submit").click(function(event) {
+      var emailInput = document.getElementById("inputEmail").value
+      var passwordInput = document.getElementById("inputPassword").value
       event.preventDefault();
+      console.log(emailInput)
+      console.log("submit clicked")
+      
       var userData = {
-        email: emailInput.val().trim(),
-        password: passwordInput.val().trim()
+        email: emailInput,
+        password: passwordInput
       };
   
       if (!userData.email || !userData.password) {
@@ -24,16 +29,18 @@ $(document).ready(function() {
   
     // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
     function loginUser(email, password) {
+        console.log("checking account")
       $.post("/api/login", {
         email: email,
         password: password
       }).then(function(data) {
+        console.log("completed")
+        console.log(data)
         window.location.replace(data);
         // If there's an error, log the error
       }).catch(function(err) {
         console.log(err);
       });
     }
-  
-  });
+
   

@@ -8,11 +8,11 @@ module.exports = function(sequelize, DataTypes) {
 // ENUMS- allows for only some acceptable options, not whatever
 
   Post.associate = function(models) {
-    // Post.belongsTo(models.User, {
-    //   foreignKey: {
-    //     allowNull: true
-    //   }
-    // }),
+    Post.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    }),
     Post.hasMany(models.Comment, {
       onDelete: "cascade"
     })
