@@ -75,15 +75,22 @@ module.exports = function(app) {
   Promise
       .all([postInfo,comments])
       .then(responses => {
-          console.log('**********COMPLETE RESULTS****************');
+        let commentInfo=[];
+        try { 
+        console.log('**********COMPLETE RESULTS****************');
           console.log(responses[0].description); // user profile
           console.log(responses[1][0].text); // all reports 
-        let commentInfo=[];
+        
         //add try+ Catch
+        
         for (i=0;i<responses[1].length;i++){
           commentInfo.push({
             text:responses[1][i].text})
         }
+      }
+      catch(err){
+        console.log("no comments")
+      }
           let renderInfo= {
         post: {
           id: responses[0].id,
