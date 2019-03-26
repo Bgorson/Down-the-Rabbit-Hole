@@ -1,9 +1,10 @@
+// Packages
 var db = require("../models");
 var passport = require("../config/passport");
-module.exports = function(app) {
 
-//route for making new posts
-//when making a post, run create and do sequelize 
+module.exports = function(app) {
+  // route for making new posts
+  // When making a post, run create and do sequelize
   app.post("/api/post", function(req, res){
     console.log("hitting post route")
     db.Post.create(req.body).then(function(post) {
@@ -19,17 +20,16 @@ module.exports = function(app) {
   //   });
   // });
 
-// For selecting a specific post based off ID number. Send data back to the page
+  // For selecting a specific post based off ID number. Send data back to the page
   app.get("/api/posts/:id", function(req, res) {
     db.Post.findAll({
       where: {
-        id:req.params.id
+        id: req.params.id
       }
     }).then(function(post) {
       res.json(post);
     });
   });
-
 
   app.post("/api/login", passport.authenticate("local"), function(req, res) {
     // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
@@ -43,16 +43,15 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User.create({
-      email: req.body.email,
-      password: req.body.password
-    }).then(function() {
-      res.redirect(307, "/api/login");
-    }).catch(function(err) {
-      console.log(err);
-      res.json(err);
-      // res.status(422).json(err.errors[0].message);
-    });
+    db.User.create({ email: req.body.email, password: req.body.password })
+      .then(function() {
+        res.redirect(307, "/api/login");
+      })
+      .catch(function(err) {
+        console.log(err);
+        res.json(err);
+        // res.status(422).json(err.errors[0].message);
+      });
   });
 
   // Route for logging user out
@@ -66,20 +65,18 @@ module.exports = function(app) {
     if (!req.user) {
       // The user is not logged in, send back an empty object
       res.json({});
-    }
-    else {
+    } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
+      res.json({ email: req.user.email, id: req.user.id });
     }
   });
+
   // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {
   //   db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
   //     res.json(dbExample);
   //   });
   // });
+
 };

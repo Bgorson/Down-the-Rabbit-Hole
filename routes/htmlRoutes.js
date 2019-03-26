@@ -5,8 +5,7 @@ var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
-
-  //Default page loaded when arriving at site
+  // Default page loaded when arriving at site
   app.get("/", function(req, res) {
     db.Post.findAll({}).then(function(dbPosts) {
       res.render("display-posts", {
@@ -14,8 +13,7 @@ module.exports = function(app) {
       });
     });
   });
-
-//Used when making a post
+  // Used when making a post
   app.get("/post", function(req, res) {
     res.render("post", {
       msg: "Post here!",
@@ -25,15 +23,14 @@ module.exports = function(app) {
 
   //Used for logging into your account
   app.get("/login", function(req, res) {
-    console.log("hitting login route")
+    console.log("hitting login route");
     // If the user already has an account send them to the members page
     if (req.user) {
-      console.log("Build in a block here somewhere")
-      console.log("you're already logged in")
+      console.log("Build in a block here somewhere");
+      console.log("you're already logged in");
     }
-    res.render("login")
+    res.render("login");
   });
-
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
@@ -42,12 +39,12 @@ module.exports = function(app) {
   // });
 
   // logic for creating an account
-  app.get("/create",function(req,res){
-    console.log("creating account")
-    res.render("createAccount")
-  })
+  app.get("/create", function(req, res) {
+    console.log("creating account");
+    res.render("createAccount");
+  });
 
-  // Commentsn
+  // Comments
   // app.get("/comment", function(req, res) {
   //   db.Post.findAll({
   //     where: {
@@ -62,12 +59,15 @@ module.exports = function(app) {
   //   });
   // })
 
-  // Load example page and pass in an example by id
-  // can pull up a post by its ID 
+  // Show a post by its ID
   app.get("/post/:id", function(req, res) {
-    db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPosts) {
-      res.render("example", {
-        example: dbPosts
+    db.Post.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbPosts) {
+      res.render("display-one-post", {
+        post: dbPosts
       });
     });
   });

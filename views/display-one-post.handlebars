@@ -9,32 +9,19 @@
       </div>
     </div>
   </div>
-        <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
-  <button id="login">Log In here</button>
-      <a class="navbar-brand" href="/logout">
-        Logout
-      </a>
-            <a class="navbar-brand" href="/post">
-        Make a post
-      </a>
 
 
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
         <h3 class="text-center">Posts Here</h3>
-        {{!-- Iterate through 'posts' data item. --}}
-        {{#each posts}}
+        {{!-- Display one post data item. --}}
         <div class="card mt-4">
-          {{!-- Title as card header --}}
-          <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
+          <h5 class="card-header">{{post.text}}</h5>
           <div class="card-body">
-            <p class="card-text"><strong>Description</strong>: {{this.description}}</p>
+            <p class="card-text"><strong>Description</strong>: {{post.description}}</p>
           </div>
         </div>
-        {{/each}}
       </div>
     </div>
   </div>
@@ -42,4 +29,4 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/display.js"></script>
+<script src="/js/index.js"></script>
