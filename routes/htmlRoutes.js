@@ -82,18 +82,18 @@ module.exports = function(app) {
           console.log('**********COMPLETE RESULTS****************');
           console.log(responses[0].description); // user profile
           console.log(responses[1][0].text); // all reports 
-        let commentText=[];
+        let commentInfo=[];
+        //add try+ Catch
         for (i=0;i<responses[1].length;i++){
-          commentText.push(responses[1][i].text)
+          commentInfo.push({
+            text:responses[1][i].text})
         }
           let renderInfo= {
         post: {
           id: responses[0].id,
           description: responses[0].description,
-          text: responses[0].text
-        },
-        comment: {
-          text:commentText
+          text: responses[0].text,
+          comment:commentInfo
         }
       }
       console.log(renderInfo)
