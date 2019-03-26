@@ -1,12 +1,6 @@
-//declare location of text to be inputted
-//when clicking a post, need to pass ID of the 
-//post somehow
-var postId = 1;
+var postId = $("#submit").attr("post")
 var $description = $("#comment-description");
 //pending functionality of linking to user profile
-$(".userProfile").click(function() {
-  alert("Clicked Add link to user profile here");
-});
 //establish post route logic
 var API = {
   newComment: function(comment) {
@@ -15,7 +9,7 @@ var API = {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/comment/" + postId ,
+      url: "api/comment",
       data: JSON.stringify(comment)
     });
   }
@@ -23,13 +17,13 @@ var API = {
 
 //on submit- make post object and put in SQL
 $("#submit").click(function(event) {
+  console.log("postID " + postId)
   event.preventDefault();
-  
   var comment = {
     text: $description.val().trim(),
-    topic: postId,
+    PostId: postId
   };
-  
+  console.log(comment)
   if (!(comment.text)) {
     alert("You must enter an post text and description!");
     return;

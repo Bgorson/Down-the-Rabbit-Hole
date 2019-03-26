@@ -61,16 +61,54 @@ module.exports = function(app) {
 
   // Show a post by its ID
   app.get("/post/:id", function(req, res) {
-    db.Post.findOne({
+    const postId= req.params.id
+    const postInfo = db.Post.findOne({
       where: {
-        id: req.params.id
+          id:postId
       }
-    }).then(function(dbPosts) {
-      res.render("display-one-post", {
-        post: dbPosts
-      });
-    });
   });
+  const comments = db.Comment.findAll({
+      where: {
+          PostId:postId
+      }
+  });
+  Promise
+      .all([postInfo,comments])
+      .then(responses => {
+          console.log('**********COMPLETE RESULTS****************');
+          console.log(responses[0].description); // user profile
+          console.log(responses[1][0].text); // all reports 
+        let commentInfo=[];
+        //add try+ Catch
+        for (i=0;i<responses[1].length;i++){
+          commentInfo.push({
+            text:responses[1][i].text})
+        }
+          let renderInfo= {
+        post: {
+          id: responses[0].id,
+          description: responses[0].description,
+          text: responses[0].text,
+          comment:commentInfo
+        }
+      }
+      console.log(renderInfo)
+      //use helper
+      res.render("singlePost", {
+        response: renderInfo,
+      });
+
+        })
+      .catch(err => {
+          console.log('**********ERROR RESULT****************');
+          console.log(err);
+      });
+
+    });
+
+
+
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
