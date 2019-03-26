@@ -12,12 +12,12 @@ module.exports = function(app) {
   });
 
   //route for making a new comment
-  // app.post("/api/comment/:post", function(req, res){
-  //   console.log("commenting on post number: " + req.params.post)
-  //   db.Comment.create(req.body).then(function(comment) {
-  //     res.json(comment);
-  //   });
-  // });
+  app.post("/post/api/comment", function(req, res){
+    console.log("commenting on post number:")
+    db.Comment.create(req.body).then(function(comment) {
+      res.json(comment);
+    });
+  });
 
 // For selecting a specific post based off ID number. Send data back to the page
   app.get("/api/posts/:id", function(req, res) {

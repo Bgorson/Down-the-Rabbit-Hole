@@ -65,12 +65,54 @@ module.exports = function(app) {
   // Load example page and pass in an example by id
   // can pull up a post by its ID 
   app.get("/post/:id", function(req, res) {
-    db.Post.findOne({ where: { id: req.params.id } }).then(function(dbPosts) {
-      res.render("example", {
-        example: dbPosts
-      });
-    });
+    const postId= req.params.id
+    const postInfo = db.Post.findOne({
+      where: {
+          id:postId
+      }
   });
+  const comments = db.Comment.findAll({
+      where: {
+          PostId:postId
+      }
+  });
+  Promise
+      .all([postInfo,comments])
+      .then(responses => {
+          console.log('**********COMPLETE RESULTS****************');
+          console.log(responses[0].description); // user profile
+          console.log(responses[1][0].text); // all reports 
+        let commentText=[];
+        for (i=0;i<responses[1].length;i++){
+          commentText.push(responses[1][i].text)
+        }
+          let renderInfo= {
+        post: {
+          id: responses[0].id,
+          description: responses[0].description,
+          text: responses[0].text
+        },
+        comment: {
+          text:commentText
+        }
+      }
+      console.log(renderInfo)
+      //use helper
+      res.render("singlePost", {
+        response: renderInfo,
+      });
+
+        })
+      .catch(err => {
+          console.log('**********ERROR RESULT****************');
+          console.log(err);
+      });
+
+    });
+
+
+
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
