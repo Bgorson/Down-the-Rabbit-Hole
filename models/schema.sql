@@ -1,2 +1,4 @@
-CREATE DATABASE IF EXISTS projecttwo;
+CREATE DATABASE projecttwo;
+
+
 

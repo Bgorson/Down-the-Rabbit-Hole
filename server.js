@@ -20,6 +20,7 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
+exphbs.registerPartial( "nav" , "{{name}}");
 
 // Routes
 require("./routes/apiRoutes")(app);
