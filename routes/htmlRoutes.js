@@ -7,12 +7,25 @@ var isAuthenticated = require("../config/middleware/isAuthenticated");
 module.exports = function(app) {
   // Default page loaded when arriving at site
   app.get("/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPosts) {
-      res.render("display-posts", {
-        posts: dbPosts
-      });
+    let allPosts = db.Post.findAll({});
+    let setCategories = db.Post.findAll({
+      attributes: [
+        // show distinct values from col 'category'
+        [db.sequelize.fn("DISTINCT", db.sequelize.col("category")), "category"]
+      ]
     });
+    Promise
+      .all([allPosts, setCategories])
+      .then(responses => {
+      // .then(function(dbPosts) {
+        res.render("display-posts", {
+          posts: responses[0],
+          // categories: new Set([dbPosts.category])
+          categories: responses[1]
+        });
+      });
   });
+
   // Used when making a post
   app.get("/post", function(req, res) {
     res.render("post", {
@@ -70,6 +83,22 @@ module.exports = function(app) {
         post: dbPosts
       });
     });
+  });
+
+  // Show all posts by its category
+  // Path cannot be /post/:category, sotherwise, default to /post/:id above
+  app.get("/posts/:category", function(req, res) {
+    db.Post.findAll({
+      where: {
+        category: req.params.category
+      }
+    }).then(function(dbPosts) {
+      res.render("display-posts-category", {
+        posts: dbPosts
+      });
+    });
+
+    // console.log(dbPosts);
   });
 
   // Render 404 page for any unmatched routes

@@ -10,31 +10,9 @@
     </div>
   </div>
 
-  <div class="col-md-6 col-md-offset-3">
-    <h2>Welcome <span class="member-name"></span></h2>
-  </div>
-
-  <button id="login">Log In here</button>
-  <a class="navbar-brand" href="/logout">Logout</a>
-  <a class="navbar-brand" href="/post">Make a post</a>
-
-
   <div class="container">
     <div class="row">
-
-      {{!-- Category as Side Nav --}}
-      <div class="col-sm-3 col-lg-2">
-        <div class="navbar navbar-default">
-          {{#each categories}}
-          <div>
-            <a href="/posts/{{this.category}}">{{this.category}}</a>
-          </div>
-          {{/each}}
-        </div>
-      </div>
-
-      {{!-- Posts Body --}}
-      <div class="col-8">
+      <div class="col-8 offset-2">
         <h3 class="text-center">Posts Here</h3>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
@@ -42,21 +20,15 @@
           {{!-- Title as card header --}}
           <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
           <div class="card-body">
-            <p class="card-text"><strong>Description</strong>: {{this.description}}</p>
+              <p class="card-text"><strong>Description</strong>: {{this.description}}</p>
           </div>
         </div>
         {{/each}}
       </div>
-
     </div>
-
-
   </div>
-
-
-
 
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/display.js"></script>
+<script src="/js/index.js"></script>
