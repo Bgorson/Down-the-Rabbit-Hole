@@ -48,32 +48,12 @@ module.exports = function(app) {
     res.render("login");
   });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  // app.get("/members", isAuthenticated, function(req, res) {
-  //   res.redirect("/");
-  // });
-
   // logic for creating an account
   app.get("/create", function(req, res) {
     console.log("creating account");
     res.render("createAccount");
   });
 
-  // Comments
-  // app.get("/comment", function(req, res) {
-  //   db.Post.findAll({
-  //     where: {
-  //       id: 3
-  //     }
-  //   }).then(function(result){
-  //     console.log("this is my result" + result[0].description)
-  //     res.render("comment", {
-  //       msg: "comment!",
-  //       post: result[0].description
-  //     });
-  //   });
-  // })
 
   // Show a post by its ID
   app.get("/post/:id", function(req, res) {
@@ -138,11 +118,6 @@ module.exports = function(app) {
       });
 
     });
-
-
-
-
-
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
