@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h5 class="card-title">Post</h5>
+          <p>
+            <strong>ID</strong>: {{response.post.id}}</p>
+          <p>
+          <p>
+            <strong>Text</strong>: {{response.post.text}}</p>
+          <p>
+            <strong>Description:</strong> {{response.post.description}}</p>
+          <p>
+           <strong>Author: </strong> {{response.post.name}} </p>
+           <p>
+            <strong>Comments:</strong> 
+            </p>
+            
+             {{#each response.post.comment}}
+             <p>
+            Created by: {{this.name}}
+            
+            </p> 
+            <p> {{this.text}}</p>
+              {{/each}}
+            
+            
+            <a href="/">← Back To Home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+          <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label for="comment-description">Comment</label>
+            <textarea class="form-control" id="comment-description" aria-describedby="commet-description" placeholder="Enter comment"></textarea>
+          </div>
+          <button id="submit" post="{{response.post.id}}" class="btn btn-primary float-right">Submit</button>
+        </form>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/comment.js"></script>
