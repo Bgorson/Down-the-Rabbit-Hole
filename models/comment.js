@@ -1,6 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
-    text: DataTypes.STRING
+    text: DataTypes.STRING,
+    name: DataTypes.STRING
   });
   Comment.associate = function(models) {
     Comment.belongsTo(models.Post, {

@@ -11,14 +11,18 @@
             <strong>Text</strong>: {{response.post.text}}</p>
           <p>
             <strong>Description:</strong> {{response.post.description}}</p>
-           
+          <p>
+           <strong>Author: </strong> {{response.post.name}} </p>
            <p>
             <strong>Comments:</strong> 
             </p>
+            
              {{#each response.post.comment}}
              <p>
-            {{this.text}}
+            Created by: {{this.name}}
+            
             </p> 
+            <p> {{this.text}}</p>
               {{/each}}
             
             

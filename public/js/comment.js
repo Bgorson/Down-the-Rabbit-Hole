@@ -1,5 +1,10 @@
 var postId = $("#submit").attr("post")
 var $description = $("#comment-description");
+var user;
+$.get("/api/user_data").then(function(data) {
+  user = data.name
+})
+
 //pending functionality of linking to user profile
 //establish post route logic
 var API = {
@@ -17,11 +22,15 @@ var API = {
 
 //on submit- make post object and put in SQL
 $("#submit").click(function(event) {
+
+  console.log("This is the user name" + user)
   console.log("postID " + postId)
   event.preventDefault();
   var comment = {
     text: $description.val().trim(),
-    PostId: postId
+    PostId: postId,
+    name:user
+    
   };
   console.log(comment)
   if (!(comment.text)) {

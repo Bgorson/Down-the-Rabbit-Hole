@@ -19,7 +19,6 @@ module.exports = function(app) {
         }
       ]
     }).then(function(dbPosts) {
-      console.log("what i got" + JSON.stringify(dbPosts[0].User.name))
       res.render("display-posts", {
         posts: dbPosts,
       });
@@ -82,8 +81,14 @@ module.exports = function(app) {
     const postInfo = db.Post.findOne({
       where: {
           id:postId
-      }
+      },
+      include:[
+        {
+          model:db.User
+        }
+      ]
   });
+ 
   const comments = db.Comment.findAll({
       where: {
           PostId:postId
@@ -92,6 +97,7 @@ module.exports = function(app) {
   Promise
       .all([postInfo,comments])
       .then(responses => {
+        console.log("------Post INFO====="+JSON.stringify(responses,null,2))
         let commentInfo=[];
         try { 
         console.log('**********COMPLETE RESULTS****************');
@@ -102,7 +108,9 @@ module.exports = function(app) {
         
         for (i=0;i<responses[1].length;i++){
           commentInfo.push({
-            text:responses[1][i].text})
+            text:responses[1][i].text,
+            name:responses[1][i].name
+          })
         }
       }
       catch(err){
@@ -111,6 +119,7 @@ module.exports = function(app) {
           let renderInfo= {
         post: {
           id: responses[0].id,
+          name: responses[0].User.name,
           description: responses[0].description,
           text: responses[0].text,
           comment:commentInfo
