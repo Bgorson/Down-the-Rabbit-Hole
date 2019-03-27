@@ -1,8 +1,10 @@
 // Packages
 var db = require("../models");
 var passport = require("../config/passport");
+let user;
 
 module.exports = function(app) {
+
   // route for making new posts
   // When making a post, run create and do sequelize
   app.post("/api/post", function(req, res){
@@ -43,7 +45,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User.create({ email: req.body.email, password: req.body.password })
+    db.User.create({ email: req.body.email, password: req.body.password, name: req.body.name })
       .then(function() {
         res.redirect(307, "/api/login");
       })
@@ -68,7 +70,7 @@ module.exports = function(app) {
     } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({ email: req.user.email, id: req.user.id });
+      res.json({ login:true, email: req.user.email, id: req.user.id, name:req.user.name });
     }
   });
 

@@ -1,24 +1,41 @@
 var db = require("../models");
 var path = require("path");
-
+let user;
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   // Default page loaded when arriving at site
   app.get("/", function(req, res) {
-    db.Post.findAll({}).then(function(dbPosts) {
+    if (req.user) {
+      console.log("*******Logged in!************")
+      console.log(req.user)
+      user = req.user
+    }
+    db.Post.findAll({
+      include:[
+        {
+          model:db.User
+        }
+      ]
+    }).then(function(dbPosts) {
+      console.log("what i got" + JSON.stringify(dbPosts[0].User.name))
       res.render("display-posts", {
-        posts: dbPosts
+        posts: dbPosts,
       });
     });
   });
+
   // Used when making a post
   app.get("/post", function(req, res) {
+    console.log("========")
+    console.log(user)
+    console.log("========")
     res.render("post", {
       msg: "Post here!",
-      user: "User Profile Info"
+      user:user
     });
+
   });
 
   //Used for logging into your account
