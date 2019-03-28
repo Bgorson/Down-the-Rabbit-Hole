@@ -38,6 +38,7 @@ document.getElementById("createAccount").onclick = function(){
         window.location.replace(data);
         // If there's an error, log the error
       }).catch(function(err) {
+        //===============PUT ERROR MODAL HERE!!!!!=======
         console.log(err);
       });
     }
