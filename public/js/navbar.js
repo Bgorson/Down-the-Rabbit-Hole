@@ -11,9 +11,11 @@ $.get("/api/user_data").then(function(data) {
         $("#logBtn").html('<i class="fas fa-sign-in-alt">Log Out</i>')
         $('#logBtn').click(function(){
             location.href= "/logout"
+        
         })
     }
     else {
+        $("#postLink").html("")
         // $("#logBtn").text("Log in")
         $("#logBtn").html('<i class="fas fa-sign-in-alt">Log In</i>')
         $('#logBtn').click(function(){
