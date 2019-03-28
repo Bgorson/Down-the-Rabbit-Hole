@@ -8,6 +8,7 @@ var postID;
 $.get("/api/user_data").then(function(data) {
   userID = data.id
   $(".member-name").text(data.email);
+  console.log(userID + "I've got it")
 });
 //establish post route logic
 var API = {

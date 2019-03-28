@@ -1,13 +1,16 @@
+ {{!-- NAV PARTIAL --}}
+<div class="nav">
+{{>miniNav}}
+</div>
 <div id="home">
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
         <div class = "userProfile">
-        <h2>Welcome <span class="member-name"></span></h2>
+        <h2>Welcome {{user.name}}</h2>
       </div>
 
         </div>
-        <h1>{{msg}}</h1>
         <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="post-text">Title</label>

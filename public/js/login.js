@@ -3,7 +3,6 @@ document.getElementById("createAccount").onclick = function(){
 }
     // Getting references to our form and inputs
 
-
     // When the form is submitted, we validate there's an email and password entered
     $("#submit").click(function(event) {
       var emailInput = document.getElementById("inputEmail").value
