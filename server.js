@@ -50,3 +50,13 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
+
+
+// {
+//   "development": {
+//   "username": "b2d8052a5cc13c",
+//   "password": "14c8247c",
+//   "database": "heroku_cd0896e944c1168",
+//   "host": "us-cdbr-iron-east-03.cleardb.net",
+//   "dialect": "mysql"
+// },
