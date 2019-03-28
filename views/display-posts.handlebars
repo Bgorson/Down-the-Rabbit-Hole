@@ -4,13 +4,33 @@
 </div>
 <br><br>
 <div id="display-posts">
-        <div class="col-md-6 col-md-offset-3">
-        <h2>Welcome <span class="member-name"></span></h2>
-      </div>
+  <div class="col-md-6 col-md-offset-3">
+  <h2>Welcome <span class="member-name"></span></h2>
+</div>
 
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
+
+      {{!-- Category as Side Nav --}}
+      {{!-- <div class="col-sm-3 col-lg-2">
+        <div class="navbar navbar-default">
+          {{#each categories}}
+          <div>
+            <a href="/posts/{{this.category}}">{{this.category}}</a>
+          </div>
+          {{/each}}
+        </div>
+      </div> --}}
+
+      {{!-- <div>
+        {{>sideCategory}}
+      </div> --}}
+
+      {{>sideCategory}}
+
+
+      {{!-- <div class="col-8 offset-2"> --}}
+      <div class="col-8">
         <h3 class="text-center">Current Happenings</h3>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
@@ -24,8 +44,12 @@
         </div>
         {{/each}}
       </div>
+
     </div>
+
+
   </div>
+
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
