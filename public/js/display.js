@@ -1,10 +1,11 @@
-let user;
+let userName;
 let login= false;
 $(document).ready(function() {
 $.get("/api/user_data").then(function(data) {
-    user = data.name
+    userName = data.name
+    console.log("user name:" + userName)
     login = data.login
-    $(".member-name").text(user);
+    $(".member-name").text(userName);
     if (login){
         $("#logBtn").text("Log Out")
         $('#logBtn').click(function(){

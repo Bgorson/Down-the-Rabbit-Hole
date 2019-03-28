@@ -12,17 +12,23 @@ module.exports = function(app) {
       console.log(req.user)
       user = req.user
     }
-    db.Post.findAll({
-      include:[
-        {
-          model:db.User
-        }
-      ]
-    }).then(function(dbPosts) {
-      res.render("display-posts", {
-        posts: dbPosts,
-      });
+    let allPosts = db.Post.findAll({
+      include: [{model: db.User}]
     });
+    let setCategories = db.Post.findAll({
+      attributes: [
+        // show distinct values from col 'category'
+        [db.sequelize.fn("DISTINCT", db.sequelize.col("category")), "category"]
+      ]
+    });
+    Promise
+      .all([allPosts, setCategories])
+      .then(responses => {
+        res.render("display-posts", {
+          posts: responses[0],
+          categories: responses[1]
+        });
+      });
   });
 
   // Used when making a post
@@ -31,10 +37,8 @@ module.exports = function(app) {
     console.log(user)
     console.log("========")
     res.render("post", {
-      msg: "Post here!",
       user:user
     });
-
   });
 
   //Used for logging into your account
@@ -68,7 +72,7 @@ module.exports = function(app) {
         }
       ]
   });
- 
+
   const comments = db.Comment.findAll({
       where: {
           PostId:postId
@@ -79,13 +83,13 @@ module.exports = function(app) {
       .then(responses => {
         console.log("------Post INFO====="+JSON.stringify(responses,null,2))
         let commentInfo=[];
-        try { 
+        try {
         console.log('**********COMPLETE RESULTS****************');
           console.log(responses[0].description); // user profile
-          console.log(responses[1][0].text); // all reports 
-        
+          console.log(responses[1][0].text); // all reports
+
         //add try+ Catch
-        
+
         for (i=0;i<responses[1].length;i++){
           commentInfo.push({
             text:responses[1][i].text,
@@ -116,11 +120,40 @@ module.exports = function(app) {
           console.log('**********ERROR RESULT****************');
           console.log(err);
       });
+  });
 
+  // Show all posts by its category
+  // Path cannot be /post/:category, sotherwise, default to /post/:id above
+  app.get("/posts/:category", function(req, res) {
+    if (req.user) {
+      console.log("*******Logged in!************")
+      console.log(req.user)
+      user = req.user
+    }
+    let postsCategory = db.Post.findAll({
+      include: [{ model: db.User }],
+      where: {
+        category: req.params.category
+      }
     });
+    let setCategories = db.Post.findAll({
+      attributes: [
+        // show distinct values from col 'category'
+        [db.sequelize.fn("DISTINCT", db.sequelize.col("category")), "category"]
+      ]
+    });
+    Promise.all([postsCategory, setCategories]).then(responses => {
+      res.render("display-posts", {
+        posts: responses[0],
+        categories: responses[1]
+      });
+    });
+  });
+
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
-    
+
   });
 };
