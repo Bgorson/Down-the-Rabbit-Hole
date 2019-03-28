@@ -11,7 +11,8 @@ body {
   margin: 0;
   color: #fff;
 }
-.card-title{
+.card-title,
+.card-header {
   color: #000;
 }
 label {
@@ -37,13 +38,19 @@ img {
           box-sizing: border-box;
 }
 
-.form-signin{
+.form-signin {
   color: #000;
 }
-p{
+
+p {
   color: #000;
 }
-/* 404 */
+
+
+/* ----------------------------
+ 404 Not Found
+---------------------------- */
+
 #notfound {
   position: relative;
   height: 100vh;
@@ -112,6 +119,12 @@ p{
   margin-top: 0px;
   margin-bottom: 25px;
 }
+
+
+
+/* ----------------------------
+ Media Responsive
+---------------------------- */
 
 @media only screen and (max-width: 767px) {
   .notfound .notfound-404 {

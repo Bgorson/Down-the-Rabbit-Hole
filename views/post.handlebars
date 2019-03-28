@@ -2,34 +2,53 @@
 <div class="nav">
 {{>miniNav}}
 </div>
-<div id="home">
+<br><br>
+
+
+{{!-- Create and Submit Post Form --}}
+<div class="mb-5" id="create-post">
+
+  {{!-- Header Welcome User --}}
+  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
+    <h5>Welcome <span class="member-name"></span></h5>
+  </div>
+
+  {{!-- Body --}}
   <div class="container">
     <div class="row">
-      <div class="col-8 offset-2">
-        <div class = "userProfile">
-        <h2>Welcome {{user.name}}</h2>
-      </div>
+      {{!-- Category as Side Nav --}}
+      {{>sideCategory}}
 
-        </div>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="post-text">Title</label>
-            <input type="text" id="post-text" class="form-control" aria-describedby="post-text" placeholder="Enter post Text">
+      {{!-- Enter Post Form --}}
+      <div class="col-8">
+        <h3 class="text-center">Share Your Thoughts</h3>
+        <form class="clearfix mb-4 mt-4" action="POST">
+          <div class="form-group mb-4">
+            <label class="text-light" for="post-text">Title</label>
+            <input type="text" id="post-text" class="form-control"
+              aria-describedby="post-text" placeholder="Post Title">
           </div>
-          <div class="form-group">
-            <label for="post-description">Body</label>
-            <textarea class="form-control" id="post-description" aria-describedby="post-description" placeholder="Enter post Description"></textarea>
+          <div class="form-group mb-4">
+            <label class="text-light" for="post-description">Content</label>
+            <textarea class="form-control" id="post-description" rows="10"
+              aria-describedby="post-description" placeholder="Post Content"></textarea>
           </div>
-            <div class="form-group">
-            <label for="post-category">Category</label>
-            <input type="text" id="post-category" class="form-control" aria-describedby="post-text" placeholder="Enter Category">
+          <div class="form-group mb-4">
+            <label class="text-light" for="post-category">Category</label>
+            <select class="form-control" id="post-category">
+              {{#each categories}}
+              <option value="{{this.category}}">{{this.category}}</option>
+              {{/each}}
+            </select>
           </div>
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form>
-        </ul>
       </div>
+      {{!-- End Enter Post Form --}}
     </div>
   </div>
+  {{!-- End Body --}}
+
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

@@ -1,43 +1,59 @@
-<div class="container">
-  <div class="row">
-    <div class="col-8 offset-2">
-      <div class="card mt-4">
-        <div class="card-body">
-          <h5 class="card-title">Post</h5>
-          <p>
-            <strong>ID</strong>: {{response.post.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{response.post.text}}</p>
-          <p>
-            <strong>Description:</strong> {{response.post.description}}</p>
-          <p>
-           <strong>Author: </strong> {{response.post.name}} </p>
-           <p>
-            <strong>Comments:</strong> 
-            </p>
-            
-             {{#each response.post.comment}}
-             <p>
-            Created by: {{this.name}}
-            
-            </p> 
-            <p> {{this.text}}</p>
-              {{/each}}
-            
-            
-            <a href="/">← Back To Home</a>
-        </div>
-      </div>
-    </div>
+{{!-- NAV PARTIAL --}}
+<div class="nav">
+  {{>nav}}
+</div>
+<br><br>
+
+{{!-- Display All Posts --}}
+<div class="mb-5" id="display-one-post">
+
+  {{!-- Header Welcome User --}}
+  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
+    <h5>Welcome <span class="member-name"></span></h5>
   </div>
-          <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="comment-description">Comment</label>
-            <textarea class="form-control" id="comment-description" aria-describedby="commet-description" placeholder="Enter comment"></textarea>
+
+  {{!-- Body --}}
+  <div class="container">
+    <div class="row">
+      {{!-- Category as Side Nav --}}
+      {{>sideCategory}}
+
+      {{!-- Show One Post. --}}
+      <div class="col-8">
+        <h3 class="text-center">For The Curious...</h3>
+
+        <div class="card mt-4">
+          <h5 class="card-header">{{response.post.text}}</h5>
+          <div class="card-body">
+            <p class="card-text">{{response.post.description}}</p>
+            <p><strong>Author: </strong> {{response.post.name}} </p>
+            <p><strong>Comments:</strong></p>
+
+            {{#each response.post.comment}}
+            <p>Created by: {{this.name}}</p>
+            <p> {{this.text}}</p>
+            {{/each}}
+
+          </div>
+        </div>
+
+        {{!-- Enter Comment --}}
+        <form class="clearfix mb-4 mt-4" action="POST">
+          <div class="form-group mb-4">
+            <label class="text-light" for="comment-description">Comment</label>
+            <textarea class="form-control" id="comment-description" rows="3"
+              aria-describedby="commet-description" placeholder="Enter Comment"></textarea>
           </div>
           <button id="submit" post="{{response.post.id}}" class="btn btn-primary float-right">Submit</button>
         </form>
+
+      </div>
+
+    </div>
+  </div>
+  {{!-- End Body --}}
+
 </div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/comment.js"></script>

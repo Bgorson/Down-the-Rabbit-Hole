@@ -3,17 +3,22 @@
 {{>nav}}
 </div>
 <br><br>
-<div id="display-posts">
-  <div class="col-md-6 col-md-offset-3">
-  <h2>Welcome <span class="member-name"></span></h2>
-</div>
 
+{{!-- Display All Posts --}}
+<div class="mb-5" id="display-posts">
+
+  {{!-- Header Welcome User --}}
+  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
+    <h5>Welcome <span class="member-name"></span></h5>
+  </div>
+
+  {{!-- Body --}}
   <div class="container">
     <div class="row">
       {{!-- Category as Side Nav --}}
       {{>sideCategory}}
 
-      {{!-- <div class="col-8 offset-2"> --}}
+      {{!-- Show All Posts --}}
       <div class="col-8">
         <h3 class="text-center">Current Happenings</h3>
         {{!-- Iterate through 'posts' data item. --}}
@@ -23,16 +28,15 @@
           <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
           <div class="card-body">
             <p class="card-text">{{this.description}}</p>
-            <p>Created By:{{this.User.name}} </p>
+            <p>Created By: {{this.User.name}} </p>
           </div>
         </div>
         {{/each}}
       </div>
 
     </div>
-
-
   </div>
+  {{!-- End Body --}}
 
 </div>
 
