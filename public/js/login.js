@@ -5,9 +5,9 @@ document.getElementById("createAccount").onclick = function(){
 
     // When the form is submitted, we validate there's an email and password entered
     $("#submit").click(function(event) {
+      event.preventDefault();
       var emailInput = document.getElementById("inputEmail").value
       var passwordInput = document.getElementById("inputPassword").value
-      event.preventDefault();
       console.log(emailInput)
       console.log("submit clicked")
       
