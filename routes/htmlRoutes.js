@@ -20,7 +20,10 @@ module.exports = function(app) {
       user = req.user
     }
     let allPosts = db.Post.findAll({
-      include: [{model: db.User}]
+      include: [{model: db.User}],
+      order: [
+        ['counter','DESC']
+      ]
     });
     let setCategories = db.Post.findAll({
       attributes: [
@@ -143,7 +146,10 @@ module.exports = function(app) {
       include: [{ model: db.User }],
       where: {
         category: req.params.category
-      }
+      },
+      order: [
+        ['counter','DESC']
+      ]
     });
     let setCategories = db.Post.findAll({
       attributes: [
