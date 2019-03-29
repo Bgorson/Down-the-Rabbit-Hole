@@ -65,7 +65,6 @@ module.exports = function(app) {
     res.render("createAccount");
   });
 
-
   // Show a post by its ID
   app.get("/post/:id", function(req, res) {
     const postId= req.params.id

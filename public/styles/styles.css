@@ -6,6 +6,10 @@ background-size: cover;
 
 }
 
+#duplicate{
+  color:red;
+}
+
 body {
   padding: 0;
   margin: 0;

@@ -47,7 +47,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User.create({ email: req.body.email, password: req.body.password, name: req.body.name })
+        db.User.create({ email: req.body.email, password: req.body.password, name: req.body.name })
       .then(function() {
         res.redirect(307, "/api/login");
       })
@@ -56,7 +56,8 @@ module.exports = function(app) {
         res.json(err);
         // res.status(422).json(err.errors[0].message);
       });
-  });
+    });
+
 
   // Route for logging user out
   app.get("/logout", function(req, res) {
@@ -75,6 +76,18 @@ module.exports = function(app) {
       res.json({ login:true, email: req.user.email, id: req.user.id, name:req.user.name });
     }
   });
+
+app.get("/duplicateCheck",function(req,res){
+  db.User.findAll({
+  }).then(function(response){
+    let emailArray=[];
+    for (i=0;i<response.length;i++){
+      emailArray.push(response[i].email)
+    }
+    res.send(emailArray)
+  })
+})
+
 
   // Delete an example by id
   // app.delete("/api/examples/:id", function(req, res) {

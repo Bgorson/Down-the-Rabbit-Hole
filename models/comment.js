@@ -1,3 +1,6 @@
+//comment model
+//establishes relationship to posts and users
+
 module.exports = function(sequelize, DataTypes) {
   var Comment = sequelize.define("Comment", {
     text: DataTypes.STRING,
