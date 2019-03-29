@@ -1,33 +1,54 @@
-<nav class="navbar fixed-top navbar-expand-sm navbar-light bg-light">
+
+<nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
+
+  {{!-- Logo --}}
   <a class="navbar-brand" href="/"><img src="/images/rabbit.png"> Down The Rabbit Hole </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  {{!-- Collapsible Button --}}
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+    data-target=".navbarContent" aria-controls="navbarContent"
+    aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  {{!-- Collapsible Content Category - Only For Media Responsive--}}
+  <div id="nav-category" class="collapse navbar-collapse navbar-toggleable-md navbarContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-      </li>
+      <div class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+          aria-haspopup="true" aria-expanded="false">Category
+          <span class="sr-only">Category Dropdown</span></a>
+        <div class="dropdown-menu">
+          {{#each categories}}
+            <a class="dropdown-item" href="/posts/{{this.category}}">{{this.category}}</a>
+          {{/each}}
         </div>
-
-      <li id= "postLink" class="nav-item">
-        <a  class="nav-link" href="/post">Create Post <i class="fas fa-plus"></i><span class="sr-only">(current)</span></a>
-      </li>   
+      </div>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button href="" class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-    </form>
-    <hr>
-		<ul class="navbar-nav">
+  </div>
+
+  {{!-- Collapsible Content Right --}}
+  <div class="collapse navbar-collapse navbarContent">
+		<ul class="navbar-nav ml-auto">
+      <li id="postLink" class="nav-item">
+        <a class="nav-link" href="/post">Create Post
+          <i class="fas fa-plus"></i><span class="sr-only">(current)</span></a>
+      </li>
+
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button id="search-btn" href="#" class="btn btn-outline-dark my-2 my-sm-0"
+          type="submit">Search</button>
+      </form>
+
 		  <li class="nav-item">
         <a id = "logBtn" class="nav-link" href='#' > <span class="sr-only">(current)</span></a>
-      </li> 
-
-			</ul>
+      </li>
+		</ul>
   </div>
+
 </nav>
+
 <br>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/navbar.js"></script>
