@@ -9,3 +9,17 @@
 //     $(".member-name").text(userName);
 //   });
 // })
+$(document).ready(function(){
+$(".like").click(function(){
+    let postLiked = $(this).attr("value")
+
+        $.ajax({
+            headers: {
+              "Content-Type": "application/json"
+            },
+            type: "POST",
+            url: "/api/like/"+ postLiked,
+          });
+          $(this).css("display","none")
+    })
+    })

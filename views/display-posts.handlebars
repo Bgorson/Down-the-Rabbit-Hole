@@ -28,7 +28,8 @@
           <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
           <div class="card-body">
             <p class="card-text">{{this.description}}</p>
-            <p>Created By: {{this.User.name}} </p>
+            <p>Created By:{{this.User.name}} </p>
+            <button class= "like" value = '{{this.id}}'>Like</button>
           </div>
         </div>
         {{/each}}
