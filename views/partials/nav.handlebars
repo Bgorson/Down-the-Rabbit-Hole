@@ -18,8 +18,9 @@
           aria-haspopup="true" aria-expanded="false">Category
           <span class="sr-only">Category Dropdown</span></a>
         <div class="dropdown-menu">
+          <a class="dropdown-item" href="/">All</a>
           {{#each categories}}
-            <a class="dropdown-item" href="/posts/{{this.category}}">{{this.category}}</a>
+          <a class="dropdown-item" href="/posts/{{this.category}}">{{this.category}}</a>
           {{/each}}
         </div>
       </div>
