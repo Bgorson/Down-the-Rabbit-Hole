@@ -1,3 +1,4 @@
+
 var postId = $("#submit").attr("post")
 var $description = $("#comment-description");
 var user;
@@ -20,6 +21,7 @@ var API = {
   }
 };
 
+
 //on submit- make post object and put in SQL
 $("#submit").click(function(event) {
 
@@ -39,6 +41,7 @@ $("#submit").click(function(event) {
   }
   API.newComment(comment).then(function(){
     console.log("commented")
+    location.reload();
   })
   $description.val("");
 

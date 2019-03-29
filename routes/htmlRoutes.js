@@ -4,6 +4,13 @@ let user;
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
+function linkify(text) {
+  var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  return text.replace(urlRegex, function(url) {
+      return '<a class ="link-preview" href="' + url + '">' + url + '</a>';
+  });
+}
+
 module.exports = function(app) {
   // Default page loaded when arriving at site
   app.get("/", function(req, res) {
@@ -92,7 +99,7 @@ module.exports = function(app) {
 
         for (i=0;i<responses[1].length;i++){
           commentInfo.push({
-            text:responses[1][i].text,
+            text:linkify(responses[1][i].text),
             name:responses[1][i].name
           })
         }
@@ -109,6 +116,9 @@ module.exports = function(app) {
           comment:commentInfo
         }
       }
+      
+
+      
       console.log(renderInfo)
       //use helper
       res.render("singlePost", {

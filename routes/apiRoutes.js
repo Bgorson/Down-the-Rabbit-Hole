@@ -19,6 +19,8 @@ module.exports = function(app) {
     console.log("commenting on post number:")
     db.Comment.create(req.body).then(function(comment) {
       res.json(comment);
+     
+      
     });
   });
 
