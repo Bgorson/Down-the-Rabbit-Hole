@@ -24,6 +24,12 @@ module.exports = function(app) {
     });
   });
 
+  //when a post is liked
+  app.post("/api/like/:id", function(req,res){
+    console.log(req.params.id + " This post is being liked")
+    db.Post.increment(['counter'], {where: {id: req.params.id}})
+  })
+
   // For selecting a specific post based off ID number. Send data back to the page
   app.get("/api/posts/:id", function(req, res) {
     db.Post.findAll({
