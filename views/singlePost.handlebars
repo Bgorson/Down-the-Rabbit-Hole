@@ -1,20 +1,16 @@
+<div class="miniNav">
+  {{>miniNav}}
+</div>
 <div class="viewPost">
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
       <div class="card mt-4">
         <div class="card-body">
-          <h5 class="card-title">Post</h5>
-          <p>
-            <strong>ID</strong>: {{response.post.id}}</p>
-          <p>
-          <p>
-            <strong>Text</strong>: {{response.post.text}}</p>
-          <p>
-            <strong>Description:</strong> {{response.post.description}}</p>
-          <p>
-           <strong>Author: </strong> {{response.post.name}} </p>
-           <p>
+          <h2 class="card-title">{{response.post.text}}</h2>
+          <hr>
+            <h3>{{response.post.description}}</h3>
+           <h4>-{{response.post.name}}</h4>
             <strong>Comments:</strong> 
             </p>
             
