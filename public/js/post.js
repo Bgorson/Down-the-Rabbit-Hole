@@ -4,7 +4,7 @@ var $description = $("#post-description");
 var $category = $("#post-category");
 var userID;
 var postID;
-//pending functionality of linking to user profile
+//Checks to make sure a user is logged in and gets their information
 $.get("/api/user_data").then(function(data) {
   userID = data.id
   $(".member-name").text(data.email);
@@ -49,5 +49,3 @@ $("#submit").click(function(event) {
   $category.val("");
 
 });
-
-//add a redirect to main page or completed post page

@@ -4,6 +4,13 @@ let user;
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
+function linkify(text) {
+  var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+  return text.replace(urlRegex, function(url) {
+      return '<a class ="link-preview" href="' + url + '">' + url + '</a>';
+  });
+}
+
 module.exports = function(app) {
   // Default page loaded when arriving at site
   app.get("/", function(req, res) {

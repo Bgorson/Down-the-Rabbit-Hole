@@ -1,14 +1,11 @@
-// Vars
-let userName;
-let login= false;
-
-$(document).ready(function() {
-
-  $.get("/api/user_data").then(function(data) {
-    userName = data.name
-    console.log("user name:" + userName)
-    login = data.login
-    $(".member-name").text(userName);
-  });
-
-});
+// I dont think we need this since the nav bar accounts for this
+// $(document).ready(function() {
+// //gets information on the user to display and to determine if they can post
+//   $.get("/api/user_data").then(function(data) {
+//     let login= false;
+//     let userName = data.name
+//     console.log("user name:" + userName)
+//     login = data.login
+//     $(".member-name").text(userName);
+//   });
+// })
