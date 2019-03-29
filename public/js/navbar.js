@@ -7,8 +7,8 @@ $.get("/api/user_data").then(function(data) {
     login = data.login
     $(".member-name").text(userName);
     if (login){
-        // $("#logBtn").text("Log Out")
-        $("#logBtn").html('<i class="fas fa-sign-in-alt">Log Out</i>')
+        // this is the logic responsible for switching log-in/log-out button around
+        $("#logBtn").html('<i class="fas fa-sign-out-alt">Log Out</i>')
         $('#logBtn').click(function(){
             location.href= "/logout"
         
