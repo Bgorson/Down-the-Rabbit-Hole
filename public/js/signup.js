@@ -1,10 +1,10 @@
-$(document).ready(function() {
+var duplicateCheck= false;
     // Getting references to our form and input
     var signUpForm = $("form.signup");
     var emailInput = $("input#email-input");
     var passwordInput = $("input#password-input");
     var userName = $("input#text-input");
-    var duplicate= false;
+ 
   
     // When the signup button is clicked, we validate the email and password are not blank
     signUpForm.on("submit", function(event) {
@@ -19,12 +19,13 @@ $(document).ready(function() {
         return;
       }
       $.get("/duplicateCheck", function(emails){
+        duplicateCheck= false
         console.log(emails)
         for (i=0;i<emails.length;i++){
           if (emails[i] == userData.email){
             $("#duplicate").css("display","block")
-            duplicate = true;
-            signUpUser(userData.email, userData.password,userData.name)
+            duplicateCheck = true;
+            return false;
           }
         }
         signUpUser(userData.email, userData.password,userData.name)
@@ -43,8 +44,7 @@ $(document).ready(function() {
     // Does a post to the signup route. If successful, we are redirected to the members page
     // Otherwise we log any errors
     function signUpUser(email, password, name) {
-      if (duplicate == true){
-        duplicate = false;
+      if (duplicateCheck == true){
         return false;
       }
       else {
@@ -63,5 +63,5 @@ $(document).ready(function() {
       $("#alert .msg").text(err.responseJSON);
       $("#alert").fadeIn(500);
     }
-  });
+  
   
