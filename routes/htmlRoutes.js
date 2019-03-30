@@ -92,7 +92,8 @@ module.exports = function(app) {
 
           for (i=0;i<responses[1].length;i++){
             commentInfo.push({
-              text:responses[1][i].text,
+              //creates a tag links for any urls that are detected
+              text:linkify(responses[1][i].text),
               name:responses[1][i].name
             })
           }
@@ -104,7 +105,7 @@ module.exports = function(app) {
           post: {
             id: responses[0].id,
             name: responses[0].User.name,
-            description: responses[0].description,
+            description: linkify(responses[0].description),
             text: responses[0].text,
             comment:commentInfo
           }
