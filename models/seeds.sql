@@ -1,3 +1,5 @@
+USE projecttwo;
+
 -- Add User
 INSERT INTO Users (name, email, password, createdAt, updatedAt) VALUES
 ('user_1', 'user_1@email.com', 'password', NOW(), NOW()),

@@ -10,16 +10,23 @@
 //   });
 // })
 $(document).ready(function(){
-$(".like").click(function(){
+  $(".like").click(function(){
     let postLiked = $(this).attr("value")
+    $.ajax({
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "/api/like/"+ postLiked,
+    });
+    $(this).css("display","none")
+  });
 
-        $.ajax({
-            headers: {
-              "Content-Type": "application/json"
-            },
-            type: "POST",
-            url: "/api/like/"+ postLiked,
-          });
-          $(this).css("display","none")
-    })
-    })
+  // Limit Post Content to 150 chars
+  $(".post-content").shorten({
+    "showChars": 150,
+    "ellipsesText": "... ",
+    "moreText": "Continue Reading",
+  });
+
+})

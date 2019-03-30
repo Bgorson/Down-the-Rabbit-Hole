@@ -20,12 +20,17 @@ module.exports = function(app) {
       user = req.user
     }
     let allPosts = db.Post.findAll({
-      include: [{model: db.User}],
+      attributes: [
+        "id", "text",
+        // limit description to 150 chars
+        [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"]
+      ],
+      include: [{ model: db.User }],
       order: [
-        ['counter','DESC']
+        ['counter', 'DESC']
       ]
     });
-    let setCategories = getCategories;
+    let setCategories = getCategories();
     Promise
       .all([allPosts, setCategories])
       .then(responses => {
@@ -41,13 +46,19 @@ module.exports = function(app) {
     console.log("========");
     console.log(user);
 
-    let setCategories = getCategories;
-    Promise.all([setCategories]).then(responses => {
-      res.render("post", {
-        user: user,
-        categories: responses[0]
+    let setCategories = getCategories();
+    Promise
+      .all([setCategories])
+      .then(responses => {
+        res.render("post", {
+          user: user,
+          categories: responses[0]
+        });
+       })
+      .catch (err => {
+        console.log('********** ERROR RESULT ****************');
+        console.log(err);
       });
-    });
   });
 
   //Used for logging into your account
@@ -77,7 +88,7 @@ module.exports = function(app) {
     const comments = db.Comment.findAll({
       where: {PostId:postId}
     });
-    let setCategories = getCategories;
+    let setCategories = getCategories();
     Promise
       .all([postInfo, comments, setCategories])
       .then(responses => {
@@ -98,7 +109,7 @@ module.exports = function(app) {
           }
         }
         catch(err){
-          console.log("no comments")
+          console.log("no comments");
         }
         let renderInfo= {
           post: {
@@ -130,21 +141,30 @@ module.exports = function(app) {
       user = req.user
     };
     let postsCategory = db.Post.findAll({
-      include: [{ model: db.User }],
+      attributes: [
+        "id", "text",
+        // Limit description to 150 chars
+        [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"]
+      ],
       where: {
         category: req.params.category
       },
-      order: [
-        ['counter','DESC']
-      ]
+      include: [{ model: db.User }],
+      order: [["counter", "DESC"]]
     });
-    let setCategories = getCategories;
-    Promise.all([postsCategory, setCategories]).then(responses => {
-      res.render("display-posts", {
-        posts: responses[0],
-        categories: responses[1]
+    let setCategories = getCategories();
+    Promise
+      .all([postsCategory, setCategories])
+      .then(responses => {
+        res.render("display-posts", {
+          posts: responses[0],
+          categories: responses[1]
+        });
+      })
+      .catch (err => {
+        console.log('********** ERROR RESULT ****************');
+        console.log(err);
       });
-    });
   });
 
   // Render 404 page for any unmatched routes
@@ -158,8 +178,11 @@ module.exports = function(app) {
 // -------- Helper Functions --------
 
 // Get Set of Categories
-let getCategories = db.Post.findAll({
-  attributes: [[
-    // show distinct values from col 'category'
-    db.sequelize.fn("DISTINCT", db.sequelize.col("category")),"category"]]
-});
+function getCategories() {
+  let category = db.Post.findAll({
+    attributes: [[
+      // show distinct values from col 'category'
+      db.sequelize.fn("DISTINCT", db.sequelize.col("category")), "category"]]
+  });
+  return category;
+}

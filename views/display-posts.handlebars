@@ -27,7 +27,11 @@
           {{!-- Title as card header --}}
           <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
           <div class="card-body">
-            <p class="card-text">{{this.description}}</p>
+
+            {{!-- Limit Post Content --}}
+            <p class="card-text post-content"
+              value="{{this.id}}">{{this.description}}</p>
+
             <p>Created By:{{this.User.name}} </p>
             <button class= "like" value = '{{this.id}}'>Like</button>
           </div>
@@ -42,4 +46,5 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/shorten.js"></script>
 <script src="/js/display.js"></script>
