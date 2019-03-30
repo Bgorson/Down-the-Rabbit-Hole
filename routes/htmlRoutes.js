@@ -30,9 +30,10 @@ module.exports = function(app) {
     Promise
       .all([allPosts, setCategories])
       .then(responses => {
+        console.log("This is all response info"+ JSON.stringify(responses, null,2))
         res.render("display-posts", {
           posts: responses[0],
-          categories: responses[1]
+          categories: responses[1],
         });
       });
   });
@@ -131,7 +132,8 @@ module.exports = function(app) {
             name: responses[0].User.name,
             description: linkify(responses[0].description),
             text: responses[0].text,
-            comment:commentInfo
+            comment:commentInfo,
+            createdAt:responses[0].createdAt
           }
         }
         console.log(renderInfo);
@@ -225,3 +227,4 @@ let getCategories = db.Post.findAll({
     // show distinct values from col 'category'
     db.sequelize.fn("DISTINCT", db.sequelize.col("category")),"category"]]
 });
+

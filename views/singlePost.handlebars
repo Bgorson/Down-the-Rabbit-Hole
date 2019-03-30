@@ -25,6 +25,7 @@
           <div class="card-body">
             <p class="card-text">{{{response.post.description}}}</p>
             <p><strong>Author: </strong> {{response.post.name}} </p>
+            <p>Posted: {{setTime response.post.createdAt}}</p>
             <hr>
             <p><strong>Comments:</strong></p>
             {{#each response.post.comment}}

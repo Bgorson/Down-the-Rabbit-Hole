@@ -1,3 +1,4 @@
+
 {{!-- NAV PARTIAL --}}
 <div class="nav">
 {{>nav}}
@@ -27,6 +28,7 @@
           <div class="card-body">
             <p class="card-text">{{{this.description}}}</p>
             <p>Created By:{{this.User.name}} </p>
+            <p>Posted At: {{setTime this.createdAt}}</p>
             <div class = 'voting'+ {{this.id}}>
             <i class= "like fas fa-carrot fa-lg" value = '{{this.id}}'></i>
              <i class= "dislike far fa-frown-open fa-lg" value = '{{this.id}}'></i>
@@ -40,6 +42,8 @@
   </div>
   {{!-- End Body --}}
 </div>
+
 <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="/js/display.js"></script>
