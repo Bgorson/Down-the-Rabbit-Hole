@@ -1,6 +1,7 @@
 var db = require("../models");
 var path = require("path");
 let user;
+var Fuse = require("fuse.js")
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -171,13 +172,50 @@ module.exports = function(app) {
     });
   });
 
+
+
+//Search page
+app.get("/search/:string", function(req, res) {
+  console.log("hiting search route")
+  var results = []
+  var idResults=[];
+  var options = {
+    keys: ['text', 'description'],
+    id: 'id'
+  }
+ db.Post.findAll({})
+        .then(responses => {
+          for (i=0;i<responses.length;i++){
+            results.push({
+              id:responses[i].id,
+              text:responses[i].text,
+              description:responses[i].description
+            })
+          }
+var fuse = new Fuse(results, options)
+console.log("THIS IS FUSE RES " + fuse.search(req.params.string))
+return searchResults= fuse.search(req.params.string)
+      }).then(function(searchResults){
+        db.Post.findAll({
+          where: {
+            id: searchResults
+          }
+        }).then(function(response){
+          res.render("search-results", {
+            posts: response,
+        })
+      })
+    })
+  })
+
+    
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
 
-};
 
+};
 
 // -------- Helper Functions --------
 
