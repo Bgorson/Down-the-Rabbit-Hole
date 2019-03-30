@@ -41,9 +41,10 @@ body {
   color: #F0FFFF;
   font-family: 'Major Mono Display', monospace;
 }
-.container {
+/* .container {
   padding-top: 100px;
-}
+} */
+
 label {
   color: #000;
 }
@@ -60,9 +61,9 @@ img {
 a {
   color: #000;
 }
-.nav {
+/* .nav {
   padding-bottom: 4em;
-}
+} */
 .navbar-brand {
   font-family: 'Barrio', cursive;
 }

@@ -8,9 +8,7 @@
 <div class="mb-5" id="display-posts">
 
   {{!-- Header Welcome User --}}
-  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
-    <h5 class="greeting">Welcome <span class="member-name"></span></h5>
-  </div>
+  {{>welcome}}
 
   {{!-- Body --}}
   <div class="container">
@@ -20,7 +18,7 @@
 
       {{!-- Show All Posts --}}
       <div class="col-8">
-        <h3 class="text-center topPost">Trending Posts</h3>
+        <h2 class="text-center topPost">Trending Posts</h2>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
         <div class="card mt-4">
@@ -38,7 +36,6 @@
     </div>
   </div>
   {{!-- End Body --}}
-
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
