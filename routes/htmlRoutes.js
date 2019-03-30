@@ -148,11 +148,18 @@ module.exports = function(app) {
       });
     });
   });
+
+
+
 //Search page
-app.get("/search", function(req, res) {
+app.get("/search/:string", function(req, res) {
   console.log("hiting search route")
   var results = []
   var idResults=[];
+  var options = {
+    keys: ['text', 'description'],
+    id: 'id'
+  }
  db.Post.findAll({})
         .then(responses => {
           for (i=0;i<responses.length;i++){
@@ -162,32 +169,27 @@ app.get("/search", function(req, res) {
               description:responses[i].description
             })
           }
-         var options = {
-          keys: ['text', 'description'],
-          id: 'id'
-        }
-console.log(results)
 var fuse = new Fuse(results, options)
+console.log("THIS IS FUSE RES " + fuse.search(req.params.string))
+return searchResults= fuse.search(req.params.string)
+      }).then(function(searchResults){
+        db.Post.findAll({
+          where: {
+            id: searchResults
+          }
+        }).then(function(response){
+          res.render("search-results", {
+            posts: response,
+        })
+      })
+    })
+  })
 
-console.log("THIS IS FUSE RES " + fuse.search('description'))
-.then(db.Post.findAll({
-  where: {
-    id:
-  }
-})
-.then(responses => {
-      res.render("search-results", {
-        posts: responses
-      });
-    }));
-});
+    
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
-
-
-
 
 
 };

@@ -24,5 +24,11 @@ $.get("/api/user_data").then(function(data) {
     }
   });
 
+
+    $("#search-btn").click(function(event){
+        event.preventDefault();
+        let search= $(".form-control").val();
+        location.href= "/search/" + search
+    })
 })
 
