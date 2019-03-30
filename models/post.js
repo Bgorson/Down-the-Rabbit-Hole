@@ -1,8 +1,14 @@
+//post modal
+//establishes relationship to users and comments
 module.exports = function(sequelize, DataTypes) {
   var Post = sequelize.define("Post", {
     text: DataTypes.STRING,
     description: DataTypes.TEXT,
-    category: DataTypes.TEXT
+    category: DataTypes.TEXT,
+    counter: {
+      type: DataTypes.INTEGER,
+      defaultValue:0
+    }
   });
   
 // ENUMS- allows for only some acceptable options, not whatever

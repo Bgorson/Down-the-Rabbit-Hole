@@ -1,6 +1,26 @@
 document.getElementById("createAccount").onclick = function(){
   location.href= "/create"
 }
+
+// Get the modal
+var modal = document.getElementById('myModal');
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
     // Getting references to our form and inputs
 
     // When the form is submitted, we validate there's an email and password entered
@@ -38,7 +58,9 @@ document.getElementById("createAccount").onclick = function(){
         window.location.replace(data);
         // If there's an error, log the error
       }).catch(function(err) {
+        //===============PUT ERROR MODAL HERE!!!!!=======
         console.log(err);
+        modal.style.display = "block";
       });
     }
 
