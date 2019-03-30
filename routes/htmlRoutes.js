@@ -22,6 +22,29 @@ module.exports = function(app) {
     let allPosts = db.Post.findAll({
       include: [{model: db.User}],
       order: [
+        ['id','DESC']
+      ]
+    });
+    let setCategories = getCategories;
+    Promise
+      .all([allPosts, setCategories])
+      .then(responses => {
+        res.render("display-posts", {
+          posts: responses[0],
+          categories: responses[1]
+        });
+      });
+  });
+
+  app.get("/popular", function(req, res) {
+    if (req.user) {
+      console.log("*******Logged in!************")
+      console.log(req.user)
+      user = req.user
+    }
+    let allPosts = db.Post.findAll({
+      include: [{model: db.User}],
+      order: [
         ['counter','DESC']
       ]
     });
