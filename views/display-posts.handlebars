@@ -4,11 +4,11 @@
 </div>
 
 <div id="display-posts">
+  <div class="container">
   <div class="col-md-6 col-md-offset-3">
-  <h2>Welcome <span class="member-name"></span></h2>
+  <h2 class="greeting">Welcome <span class="member-name"></span></h2>
 </div>
 
-  <div class="container">
     <div class="row">
 
      
@@ -17,8 +17,9 @@
 
 
       {{!-- <div class="col-8 offset-2"> --}}
-      <div class="col-8">
-        <h3 class="text-center">Current Happenings</h3>
+      <div class="col-8 text-center">
+        <h1 class="topPost">Trending Posts</h1>
+        <hr>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
         <div class="card mt-4">
@@ -26,7 +27,7 @@
           <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
           <div class="card-body">
             <p class="card-text">{{this.description}}</p>
-            <p>Created By:{{this.User.name}} </p>
+            <p>Author:{{this.User.name}} </p>
           </div>
         </div>
         {{/each}}
