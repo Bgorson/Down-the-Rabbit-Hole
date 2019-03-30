@@ -30,6 +30,12 @@ module.exports = function(app) {
     db.Post.increment(['counter'], {where: {id: req.params.id}})
   })
 
+  //when a post is disliked
+  app.post("/api/dislike/:id", function(req,res){
+    console.log(req.params.id + " This post is being disliked")
+    db.Post.decrement(['counter'], {where: {id: req.params.id}})
+  })
+
   // For selecting a specific post based off ID number. Send data back to the page
   app.get("/api/posts/:id", function(req, res) {
     db.Post.findAll({

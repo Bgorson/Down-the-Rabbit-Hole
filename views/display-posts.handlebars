@@ -27,7 +27,10 @@
           <div class="card-body">
             <p class="card-text">{{{this.description}}}</p>
             <p>Created By:{{this.User.name}} </p>
-            <button class= "like" value = '{{this.id}}'>Like</button>
+            <div class = 'voting'+ {{this.id}}>
+            <i class= "like fas fa-carrot" value = '{{this.id}}'></i>
+             <i class= "dislike far fa-frown-open" value = '{{this.id}}'></i>
+          </div>
           </div>
         </div>
         {{/each}}
