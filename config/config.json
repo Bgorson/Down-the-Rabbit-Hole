@@ -1,11 +1,12 @@
 {
   "development": {
-    "username": "root",
-    "password": "fenrir32",
-    "database": "projecttwo",
-    "host": "localhost",
-    "dialect": "mysql"
-},
+    "development": {
+      "username": "root",
+      "password": "fenrir32",
+      "database": "projecttwo",
+      "host": "localhost",
+      "dialect": "mysql"
+  },
   "test": {
     "username": "root",
     "password": null,

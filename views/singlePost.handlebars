@@ -54,6 +54,49 @@
   {{!-- End Body --}}
 
 </div>
+<div class="miniNav">
+  {{>miniNav}}
+</div>
+<div class="viewPost">
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card mt-4">
+        <div class="card-body">
+          <h2 class="card-title">{{response.post.text}}</h2>
+          <hr>
+            <h3>{{response.post.description}}</h3>
+           <h4>-{{response.post.name}}</h4>
+           <hr>
+           <div class="card-title">
+              <h3>Comments:</h3> 
+           </div>
+            <div class="card-body">
+             {{#each response.post.comment}}
+             
+            <p> {{this.text}}</p>
+           <p>- {{this.name}}
+            </p> 
+            <hr>
+              {{/each}}
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+      </div>
+
+        <div class="container">
+          <form class="clearfix mb-4" action="POST">
+          <div class="form-group">
+            <label id="comment" for="comment-description"><h3>Add a Comment</h3></label>
+            <textarea class="form-control" id="comment-description" aria-describedby="commet-description" placeholder="Enter comment"></textarea>
+          </div>
+          <button id="submit" post="{{response.post.id}}" class="btn btn-primary float-right">Submit</button>
+        </form>
+        </div>
+
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Microlink SDK Vanilla/UMD bundle -->
