@@ -25,13 +25,14 @@
         <div class="card mt-4">
           <h5 class="card-header">{{response.post.text}}</h5>
           <div class="card-body">
-            <p class="card-text">{{response.post.description}}</p>
+            <p class="card-text">{{{response.post.description}}}</p>
             <p><strong>Author: </strong> {{response.post.name}} </p>
             <p><strong>Comments:</strong></p>
 
             {{#each response.post.comment}}
             <p>Created by: {{this.name}}</p>
-            <p> {{this.text}}</p>
+            {{!-- creates a tag links for any urls that are detected --}}
+            <p> {{{this.text}}}</p>
             {{/each}}
 
           </div>
