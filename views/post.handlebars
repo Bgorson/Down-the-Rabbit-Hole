@@ -9,9 +9,7 @@
 <div class="mb-5" id="create-post">
 
   {{!-- Header Welcome User --}}
-  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
-    <h5>Welcome <span class="member-name"></span></h5>
-  </div>
+  {{>welcome}}
 
   {{!-- Body --}}
   <div class="container">
@@ -21,7 +19,7 @@
 
       {{!-- Enter Post Form --}}
       <div class="col-8">
-        <h3 class="text-center">Share Your Thoughts</h3>
+        <h3 class="text-center topPost">Share Your Thoughts</h3>
         <form class="clearfix mb-4 mt-4" action="POST">
           <div class="form-group mb-4">
             <label class="text-light" for="post-text">Title</label>
@@ -48,7 +46,6 @@
     </div>
   </div>
   {{!-- End Body --}}
-
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

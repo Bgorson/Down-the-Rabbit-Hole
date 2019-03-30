@@ -1,0 +1,4 @@
+.like, .dislike{
+    cursor: pointer;
+    margin-right:5px;
+}

@@ -3,6 +3,26 @@ var postId = $("#submit").attr("post")
 var $description = $("#comment-description");
 var user;
 var loginStatus= false;
+
+
+var modal = document.getElementById('myModal');
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
 //API call to get user information and to see if someone is logged in
 $.get("/api/user_data").then(function(data) {
   user = data.name
@@ -31,7 +51,7 @@ $("#submit").click(function(event) {
   console.log("postID " + postId)
   event.preventDefault();
   if (!loginStatus){
-    alert("Log in Modal here")
+    modal.style.display = "block";
     return false;
   }
   //Creates comment object to be placed into SQL
@@ -39,11 +59,10 @@ $("#submit").click(function(event) {
     text: $description.val().trim(),
     PostId: postId,
     name:user
-    
   };
   console.log(comment)
   if (!(comment.text)) {
-    alert("You must enter an post text and description!");
+    alert("Please enter text to comment")
     return;
   }
   ///Runs API call to MYSQL to place comment in database
@@ -56,5 +75,9 @@ $("#submit").click(function(event) {
 
 });
 
-var colors =
-
+$(function() {
+  $(".comment-bubble").each(function() {
+      var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ')';
+       $(this).css("background-color", hue);
+  });
+});

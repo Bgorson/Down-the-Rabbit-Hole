@@ -8,9 +8,7 @@
 <div class="mb-5" id="display-posts">
 
   {{!-- Header Welcome User --}}
-  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
-    <h5 class="greeting">Welcome <span class="member-name"></span></h5>
-  </div>
+  {{>welcome}}
 
   {{!-- Body --}}
   <div class="container">
@@ -20,17 +18,21 @@
 
       {{!-- Show All Posts --}}
       <div class="col-8">
-        <h3 class="text-center topPost">Trending Posts</h3>
+        <h2 class="text-center topPost">Trending Posts</h2>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
           <div class="speech-bubble">
           {{!-- Title as card header --}}
-          <h5 class="card-title"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
-          <hr>
-          <div class="">
-            <p class="">{{this.description}}</p>
-            <p>-{{this.User.name}} </p>
-            <button class= "like" value = '{{this.id}}'>Like</button>
+          <h5 class=""><a href="/post/{{this.id}}">{{this.text}}</h5></a>
+            <hr>
+          <div class="card-body">
+            <p class="card-text">{{{this.description}}}</p>
+            <p>{{this.User.name}} </p>
+            <hr>
+            <div class = 'voting'+ {{this.id}}>
+            <i class= "like fas fa-carrot fa-lg" value = '{{this.id}}'></i>
+             <i class= "dislike far fa-frown-open fa-lg" value = '{{this.id}}'></i>
+          </div>
           </div>
         </div>
         {{/each}}
@@ -46,6 +48,6 @@
   
 
 </div>
-
+<link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/display.js"></script>

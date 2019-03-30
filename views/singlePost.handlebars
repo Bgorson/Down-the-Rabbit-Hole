@@ -8,9 +8,7 @@
 <div class="mb-5" id="display-one-post">
 
   {{!-- Header Welcome User --}}
-  <div class="col-md-3 offset-9 mt-3 mb-3 text-center">
-    <h5>Welcome <span class="member-name"></span></h5>
-  </div>
+  {{>welcome}}
 
   {{!-- Body --}}
   <div class="container">
@@ -20,14 +18,14 @@
 
       {{!-- Show One Post. --}}
       <div class="col-8">
-        <h3 class="text-center">For The Curious...</h3>
+        <h2 class="text-center topPost">For The Curious...</h2>
 
         <div class="container">
         <div class="card mt-4">
           <h5 class="card-header">{{response.post.text}}</h5>
           <div class="card-body">
-            <p class="card-text">{{response.post.description}}</p>
-            <p><strong>Author: </strong> {{response.post.name}} </p>
+            <p class="card-text">{{{response.post.description}}}</p>
+            <p><strong>-</strong> {{response.post.name}} </p>
         </div>  
         </div>
             </div>
@@ -35,8 +33,8 @@
 
             {{#each response.post.comment}}
              <div class="comment-bubble">
-            <p>Created by: {{this.name}}</p>
             <p> {{this.text}}</p>
+            <p>-{{this.name}}</p>
             </div>
             {{/each}}
 
@@ -44,15 +42,23 @@
         
 
         {{!-- Enter Comment --}}
+<div id="myModal" class="modal">
+                <div class="modal-content">
+                  <span class="close">&times;</span>
+               
+                  <a href="/login">Click here to Login</a>
+                </div>
+              </div>
+
         <form class="clearfix mb-4 mt-4" action="POST">
           <div class="form-group mb-4">
-            <label class="text-light" for="comment-description">Comment</label>
+            <label id="comment" class="text-light" for="comment-description">
+              <h3>Add a Comment</h3></label>
             <textarea class="form-control" id="comment-description" rows="3"
               aria-describedby="commet-description" placeholder="Enter Comment"></textarea>
           </div>
           <button id="submit" post="{{response.post.id}}" class="btn btn-primary float-right">Submit</button>
         </form>
-
       </div>
 
     </div>
@@ -61,5 +67,5 @@
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Microlink SDK Vanilla/UMD bundle -->
-
+<link rel="stylesheet" href="/styles/login.css" media="screen" title="no title" charset="utf-8">
 <script src="/js/comment.js"></script>
