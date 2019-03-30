@@ -1,6 +1,7 @@
 var db = require("../models");
 var path = require("path");
 let user;
+var Fuse = require("fuse.js")
 // Requiring our custom middleware for checking if a user is logged in
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
@@ -27,7 +28,31 @@ module.exports = function(app) {
       ],
       include: [{ model: db.User }],
       order: [
-        ['counter', 'DESC']
+        ['id','DESC']
+      ]
+    });
+    let setCategories = getCategories();
+    Promise
+      .all([allPosts, setCategories])
+      .then(responses => {
+        console.log("This is all response info"+ JSON.stringify(responses, null,2))
+        res.render("display-posts", {
+          posts: responses[0],
+          categories: responses[1],
+        });
+      });
+  });
+
+  app.get("/popular", function(req, res) {
+    if (req.user) {
+      console.log("*******Logged in!************")
+      console.log(req.user)
+      user = req.user
+    }
+    let allPosts = db.Post.findAll({
+      include: [{model: db.User}],
+      order: [
+        ['counter','DESC']
       ]
     });
     let setCategories = getCategories();
@@ -103,7 +128,8 @@ module.exports = function(app) {
 
           for (i=0;i<responses[1].length;i++){
             commentInfo.push({
-              text:responses[1][i].text,
+              //creates a tag links for any urls that are detected
+              text:linkify(responses[1][i].text),
               name:responses[1][i].name
             })
           }
@@ -115,9 +141,10 @@ module.exports = function(app) {
           post: {
             id: responses[0].id,
             name: responses[0].User.name,
-            description: responses[0].description,
+            description: linkify(responses[0].description),
             text: responses[0].text,
-            comment:commentInfo
+            comment:commentInfo,
+            createdAt:responses[0].createdAt
           }
         }
         console.log(renderInfo);
@@ -167,13 +194,48 @@ module.exports = function(app) {
       });
   });
 
+  // Search page
+  app.get("/search/:string", function(req, res) {
+    console.log("hiting search route")
+    var results = []
+    var idResults=[];
+    var options = {
+      keys: ['text', 'description'],
+      id: 'id'
+    }
+    db.Post.findAll({})
+      .then(responses => {
+        for (i = 0; i < responses.length; i++) {
+          results.push({
+            id: responses[i].id,
+            text: responses[i].text,
+            description: responses[i].description
+          })
+        }
+        var fuse = new Fuse(results, options)
+        console.log("THIS IS FUSE RES " + fuse.search(req.params.string))
+        return searchResults = fuse.search(req.params.string)
+      }).then(function (searchResults) {
+        db.Post.findAll({
+          where: {
+            id: searchResults
+          }
+        }).then(function (response) {
+          res.render("search-results", {
+            posts: response,
+          })
+        })
+      })
+  });
+
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
 
-};
 
+};
 
 // -------- Helper Functions --------
 

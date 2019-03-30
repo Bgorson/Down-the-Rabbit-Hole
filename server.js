@@ -3,6 +3,7 @@ var express = require("express");
 var session = require("express-session")
 var exphbs = require("express-handlebars");
 var passport = require("./config/passport");
+var moment = require('moment');
 
 var db = require("./models");
 
@@ -23,7 +24,12 @@ app.use(passport.session());
 app.engine(
   "handlebars",
   exphbs({
-    defaultLayout: "main"
+    defaultLayout: "main",
+    helpers:{
+      setTime: function(time) {
+        return moment(time).format("dddd, MMMM Do YYYY, h:mm:ss a");
+      }
+    }
   })
 );
 app.set("view engine", "handlebars");

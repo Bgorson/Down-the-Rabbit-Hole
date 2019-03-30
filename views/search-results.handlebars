@@ -1,4 +1,3 @@
-
 {{!-- NAV PARTIAL --}}
 <div class="nav">
 {{>nav}}
@@ -14,29 +13,17 @@
   {{!-- Body --}}
   <div class="container">
     <div class="row">
-      {{!-- Category as Side Nav --}}
-      {{>sideCategory}}
 
       {{!-- Show All Posts --}}
       <div class="col-8">
-        <h2 class="text-center topPost">Trending Posts</h2>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
         <div class="card mt-4">
           {{!-- Title as card header --}}
           <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
           <div class="card-body">
+            <p class="card-text">{{{this.description}}}</p>
 
-            {{!-- Limit Post Content --}}
-            <p class="card-text post-content"
-              value="{{this.id}}">{{this.description}}</p>
-
-            <p>Created By:{{this.User.name}} </p>
-            <p>Posted At: {{setTime this.createdAt}}</p>
-            <div class = 'voting'+ {{this.id}}>
-            <i class= "like fas fa-carrot fa-lg" value = '{{this.id}}'></i>
-             <i class= "dislike far fa-frown-open fa-lg" value = '{{this.id}}'></i>
-          </div>
           </div>
         </div>
         {{/each}}
@@ -46,9 +33,6 @@
   </div>
   {{!-- End Body --}}
 </div>
-
 <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-{{!-- Custom JS --}}
-<script src="/js/shorten.js"></script>
 <script src="/js/display.js"></script>
