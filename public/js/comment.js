@@ -56,3 +56,5 @@ $("#submit").click(function(event) {
 
 });
 
+var colors =
+

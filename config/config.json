@@ -1,7 +1,7 @@
 {
     "development": {
       "username": "root",
-      "password": "fenrir32",
+      "password": null,
       "database": "projecttwo",
       "host": "localhost",
       "dialect": "mysql"
