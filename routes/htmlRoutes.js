@@ -147,14 +147,28 @@ module.exports = function(app) {
       });
     });
   });
-
+//Search page
+app.get("/search", function(req, res) {
+  console.log("hiting search route")
+ db.Post.findAll({})
+        .then(responses => {
+         console.log(responses)
+          
+      res.render("search-results", {
+        posts: responses
+      });
+    });
+});
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
   });
 
-};
 
+
+
+
+};
 
 // -------- Helper Functions --------
 
