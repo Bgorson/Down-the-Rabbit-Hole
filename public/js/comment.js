@@ -38,10 +38,10 @@ $(document).ready(function () {
   //Once a user clicks it, post method to increment counter
   //It will also disable the animation and future click events
   $(".like").on('click', function () {
-    if($(".like").attr("clicked")== 1){
+    if($(this).attr("clicked")== 1){
       return false
     }
-    let postLiked = $(this).attr("value")
+    let postLiked = $(".like").attr("value")
     $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -49,6 +49,7 @@ $(document).ready(function () {
       type: "POST",
       url: "/api/like/" + postLiked,
     });
+    $('.like').attr("clicked", 1)
     $('.dislike').css("display", "none")
     $('.like').removeClass("like")
   });
@@ -59,10 +60,10 @@ $(document).ready(function () {
   //It will also disable the animation and future click events
 
   $(".dislike").on('click', function () {
-    if($(".dislike").attr("clicked")== 1){
+    if($(this).attr("clicked")== 1){
       return false
     }
-    let postDisLiked = $(this).attr("value")
+    let postDisLiked = $(".dislike").attr("value")
     $.ajax({
       headers: {
         "Content-Type": "application/json"
