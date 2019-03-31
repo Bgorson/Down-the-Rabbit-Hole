@@ -35,7 +35,7 @@ $(document).ready(function(){
     loginStatus= data.login
   }).then(function(){
     if (!loginStatus){
-      $(".voting").css("display","none")
+      $(".voting").html("Please Login to vote")
     }
   })
   $(".like").click(function(){
