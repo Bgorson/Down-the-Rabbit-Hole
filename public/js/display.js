@@ -29,15 +29,15 @@ $(document).ready(function(){
     $(block).css("display", "none")
   });
 
-  $('.like').hover(
-    function () { $(this).addClass('fa-spin') },
-    function () { $(this).removeClass('fa-spin') }
-  );
+  // $('.like').hover(
+  //   function () { $(this).addClass('fa-spin') },
+  //   function () { $(this).removeClass('fa-spin') }
+  // );
 
-  $('.dislike').hover(
-    function () { $(this).addClass('fa-spin') },
-    function () { $(this).removeClass('fa-spin') }
-  );
+  // $('.dislike').hover(
+  //   function () { $(this).addClass('fa-spin') },
+  //   function () { $(this).removeClass('fa-spin') }
+  // );
 
   // Limit Post Content to 150 chars
   $(".post-content").shorten({

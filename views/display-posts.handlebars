@@ -24,7 +24,7 @@
         {{#each posts}}
         <div class="card mt-4">
           {{!-- Title as card header --}}
-          <h5 class="card-header"><a href="/post/{{this.id}}">{{this.text}}</h5></a>
+          <a class = "hvr-radial-out" href="/post/{{this.id}}"><h5 class="card-header">{{this.text}}</h5></a>
           <div class="card-body">
 
             {{!-- Limit Post Content --}}
@@ -34,8 +34,8 @@
             <p>Created By:{{this.User.name}} </p>
             <p>Posted At: {{setTime this.createdAt}}</p>
             <div class = 'voting'+ {{this.id}}>
-            <i class= "like fas fa-carrot fa-lg" value = '{{this.id}}'></i>
-             <i class= "dislike far fa-frown-open fa-lg" value = '{{this.id}}'></i>
+            <i class= "hvr-float like fas fa-carrot fa-lg" value = '{{this.id}}'></i>
+             <i class= "hvr-sink dislike far fa-frown-open fa-lg" value = '{{this.id}}'></i>
           </div>
           </div>
         </div>

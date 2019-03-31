@@ -8,7 +8,7 @@ $.get("/api/user_data").then(function(data) {
     $(".member-name").text(userName);
     if (login){
         // this is the logic responsible for switching log-in/log-out button around
-        $("#logBtn").html('<i class="fas fa-sign-out-alt">Log Out</i>')
+        $("#logBtn").html('<a href="#" class="hvr-icon-forward"><i class=" hvr-icon fas fa-sign-out-alt fa-lg">Log Out</i>')
         $('#logBtn').click(function(){
             location.href= "/logout"
         
@@ -17,7 +17,7 @@ $.get("/api/user_data").then(function(data) {
     else {
         $("#postLink").html("")
         // $("#logBtn").text("Log in")
-        $("#logBtn").html('<i class="fas fa-sign-in-alt">Log In</i>')
+        $("#logBtn").html('<a href="#" class="hvr-icon-forward"><i class="hvr-icon fas fa-sign-in-alt fa-lg">Log In</i>')
         $('#logBtn').click(function(){
             location.href= "/login"
         })
