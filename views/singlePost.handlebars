@@ -26,7 +26,7 @@
             <p class="card-text">{{{linkify response.post.description}}}</p>
             <p><strong>Author: </strong> {{response.post.name}} </p>
             <p>Posted: {{setTime response.post.createdAt}}</p>
-                        <div class = 'voting {{response.post.id}}'>
+                        <div class = 'voting'>
             <i class= "hvr-float like fas fa-carrot fa-lg" value = '{{response.post.id}}'></i>
              <i class= "hvr-sink dislike far fa-frown-open fa-lg" value = '{{response.post.id}}'></i>
           </div>

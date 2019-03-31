@@ -30,6 +30,14 @@ $.get("/api/user_data").then(function(data) {
 })
 
 $(document).ready(function(){
+  $.get("/api/user_data").then(function(data) {
+    user = data.name
+    loginStatus= data.login
+  }).then(function(){
+    if (!loginStatus){
+      $(".voting").css("display","none")
+    }
+  })
   $(".like").click(function(){
     let postLiked = $(this).attr("value")
     let block = $(this).parent().closest('div')
