@@ -32,7 +32,7 @@ app.engine(
       linkify: function linkify(text) {
         var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
         return text.replace(urlRegex, function(url) {
-            return '<a class ="link-preview" href="' + url + '">' + url + '</a>';
+            return '<a class ="link-preview" href="' + url + '" target= "_blank">' + url + '</a>';
         });
       }
     }
