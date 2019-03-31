@@ -1,12 +1,12 @@
  {{!-- NAV PARTIAL --}}
 <div class="nav">
-{{>miniNav}}
+{{>nav}}
 </div>
 <br><br>
 
 
 {{!-- Create and Submit Post Form --}}
-<div class="mb-5" id="create-post">
+<div id="create-post">
 
   {{!-- Header Welcome User --}}
   {{>welcome}}
@@ -14,11 +14,9 @@
   {{!-- Body --}}
   <div class="container">
     <div class="row">
-      {{!-- Category as Side Nav --}}
-      {{>sideCategory}}
-
+     
       {{!-- Enter Post Form --}}
-      <div class="col-8">
+      <div class="col-8 post">
         <h3 class="text-center topPost">Share Your Thoughts</h3>
         <form class="clearfix mb-4 mt-4" action="POST">
           <div class="form-group mb-4">

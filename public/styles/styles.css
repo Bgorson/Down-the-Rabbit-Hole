@@ -70,7 +70,6 @@ body {
   padding: 15px;
   position: relative;
 }
-
 .comment-bubble p {
   margin: 0 0 10px;
 }
@@ -98,13 +97,15 @@ body {
 .comment-bubble:hover, .comment-bubble:focus, .comment-bubble:active {
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
+.post {
+  margin-left: 130px;
+}
 .card-title,
 .card-header {
   color: #000;
 }
 .card {
   background-color:#F5F5F5;
-  opacity: 0.8;
 }
 .greeting {
   color:#F0FFFF;
@@ -120,10 +121,6 @@ body {
   color: #F0FFFF;
   font-family: 'Major Mono Display', monospace;
 }
-/* .container {
-  padding-top: 100px;
-} */
-
 label {
   color: #000;
 }
@@ -140,9 +137,7 @@ img {
 a {
   color: #000;
 }
-/* .nav {
-  padding-bottom: 4em;
-} */
+
 .navbar-brand {
   font-family: 'Barrio', cursive;
 }

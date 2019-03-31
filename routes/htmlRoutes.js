@@ -67,6 +67,18 @@ module.exports = function(app) {
     res.render("createAccount");
   });
 
+  // logic for creating an account
+  app.get("/profile", function(req, res) {
+    console.log("Displaying Profile");
+    res.render("profile");
+  });
+
+  // 
+  // app.get("/profile/:user", function(req, res) {
+  //   const profileQuery = req.params.user
+  //   const profileData = db.Users.findOne({
+  //     where: {name:profileQuery},
+  // });
   // Show a post by its ID
   app.get("/post/:id", function(req, res) {
     const postId= req.params.id
