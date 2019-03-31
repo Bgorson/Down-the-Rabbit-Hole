@@ -67,9 +67,15 @@ module.exports = function(app) {
     Promise
       .all([setCategories])
       .then(responses => {
+        console.log("THIS IS CATS"+ JSON.stringify(responses[0]))
         res.render("post", {
           user: user,
-          categories: responses[0]
+          // categories: responses[0]
+          categories: [{"category":"News"},{"category":"Video Games"},
+          {"category":"Shopping"},{"category":"Fitness"},
+          {"category":"TV Shows"},{"category":"Movies"},
+          {"category":"Sports"},{"category":"News"},
+          {"category":"Current Events"},{"category":"Cooking"}]
         });
        })
       .catch (err => {
@@ -162,7 +168,7 @@ module.exports = function(app) {
     };
     let postsCategory = db.Post.findAll({
       attributes: [
-        "id", "text",
+        "id", "text","counter",
         // Limit description to 150 chars
         [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"]
       ],
@@ -176,6 +182,8 @@ module.exports = function(app) {
     Promise
       .all([postsCategory, setCategories])
       .then(responses => {
+        console.log("THIS IS THE RESPONSE" + JSON.stringify(responses[0]))
+  
         res.render("display-posts", {
           posts: responses[0],
           categories: responses[1]
