@@ -24,6 +24,7 @@ $.get("/api/user_data").then(function (data) {
 })
 
 $(document).ready(function () {
+  //Checks to make sure user is logged in before allowed to vote
   $.get("/api/user_data").then(function (data) {
     user = data.name
     loginStatus = data.login
@@ -32,6 +33,10 @@ $(document).ready(function () {
       $(".voting").html("Please Login to vote")
     }
   })
+  //Allows a user to click on the like or dislike icons
+  //If they've clicked on it, it is disabled
+  //Once a user clicks it, post method to increment counter
+  //It will also disable the animation and future click events
   $(".like").on('click', function () {
     if($(".like").attr("clicked")== 1){
       return false
@@ -45,8 +50,13 @@ $(document).ready(function () {
       url: "/api/like/" + postLiked,
     });
     $('.dislike').css("display", "none")
-    $('.like').attr("clicked", 1)
+    $('.like').removeClass("like")
   });
+
+    //Allows a user to click on the like or dislike icons
+  //If they've clicked on it, it is disabled
+  //Once a user clicks it, post method to increment counter
+  //It will also disable the animation and future click events
 
   $(".dislike").on('click', function () {
     if($(".dislike").attr("clicked")== 1){
@@ -62,9 +72,10 @@ $(document).ready(function () {
     });
     $('.like').css("display", "none")
     $('.dislike').attr("clicked", 1)
+    $('.dislike').removeClass("hvr-sink")
+    $('.dislike').removeClass("dislike")
   });
 })
-
 
 //API call when a user creates a new comment. Is called and posts to route
 var API = {
@@ -82,6 +93,7 @@ var API = {
 
 
 //on submit- make post object and put in SQL
+//If user is not logged in, modal is displayed prompting for sign in
 $("#submit").click(function (event) {
   event.preventDefault();
   if (!loginStatus) {
