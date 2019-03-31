@@ -1,18 +1,20 @@
+{{!-- Toggle Wrapper --}}
+<div id="toggle-wrapper">
 
-{{!-- Category as Side Nav --}}
-<div id="sidenav-category" class="col-2">
-  <div class="sidebar-nav navbar-dark bg-dark">
-    <nav class="navbar sidenav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">All</a>
-        </li>
-        {{#each categories}}
-        <li class="nav-item">
-          <a class="nav-link" href="/posts/{{this.category}}">{{this.category}}</a>
-        </li>
-        {{/each}}
-      </ul>
-    </nav>
+  {{!-- Category as Side Nav --}}
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      {{!-- Collapsible Button --}}
+      <li class="sidebar-brand"><a href="#menu-toggle" id="menu-toggle">
+          <i class="fa fa-bars" aria-hidden="true"></i></a>
+      </li>
+      {{!-- Collapsible Content Category --}}
+      {{#each categories}}
+      <li><a href="/posts/{{this.category}}"><i class="fas fa-carrot" aria-hidden="true"></i>
+        <span>{{this.category}}</span></a>
+      </li>
+      {{/each}}
+    </ul>
   </div>
+
 </div>

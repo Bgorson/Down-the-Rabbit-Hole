@@ -18,7 +18,7 @@
       {{>sideCategory}}
 
       {{!-- Show All Posts --}}
-      <div class="col-8">
+      <div class="col-8 offset-2">
         <h2 class="text-center topPost">Trending Posts</h2>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
@@ -41,14 +41,19 @@
         </div>
         {{/each}}
       </div>
+      {{!-- End Show All Posts --}}
 
     </div>
   </div>
   {{!-- End Body --}}
 </div>
 
+
+<link rel="stylesheet" href="/styles/sidenav.css" media="screen" title="no title" charset="utf-8">
 <link rel="stylesheet" href="/styles/main.css" media="screen" title="no title" charset="utf-8">
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 {{!-- Custom JS --}}
 <script src="/js/shorten.js"></script>
+<script src="/js/sidenav.js"></script>
 <script src="/js/display.js"></script>

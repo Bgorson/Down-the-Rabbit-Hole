@@ -89,9 +89,6 @@ p {
 /* ----------------------------
  Category Sidebar Nav
 ---------------------------- */
-nav.sidenav {
-  padding: 0;
-}
 .sidebar-nav {
   position: fixed;
   top: 80px;
@@ -104,18 +101,11 @@ nav.sidenav {
   width: 140px;
   padding: .5rem 1rem;
 }
-.sidebar-nav nav ul li:hover {
-  background-color: rgba(22, 96, 180, 0.4);
-}
-.navbar-dark .navbar-nav .nav-item .nav-link:hover {
-  color: #fff;
-}
 
 /* Main Navbar Category */
 #nav-category {
 	visibility: hidden;
 }
-
 
 
 /* ----------------------------
