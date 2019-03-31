@@ -30,9 +30,6 @@
             <i class= "hvr-float like fas fa-carrot fa-lg" value = '{{response.post.id}}'></i>
              <i class= "hvr-sink dislike far fa-frown-open fa-lg" value = '{{response.post.id}}'></i>
           </div>
-            <div style= "display:none" class = "counter">
-            <p>Popularity: {{response.post.counter}}</p>
-          </div>
             <hr>
             <p><strong>Comments:</strong></p>
             {{#each response.post.comment}}

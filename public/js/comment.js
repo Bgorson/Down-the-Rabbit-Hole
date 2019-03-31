@@ -2,61 +2,57 @@
 var postId = $("#submit").attr("post")
 var $description = $("#comment-description");
 var user;
-var loginStatus= false;
-
-
+var loginStatus = false;
 var modal = document.getElementById('myModal');
-
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 }
 
 //API call to get user information and to see if someone is logged in
-$.get("/api/user_data").then(function(data) {
+$.get("/api/user_data").then(function (data) {
   user = data.name
-  loginStatus= data.login
+  loginStatus = data.login
 })
 
-$(document).ready(function(){
-  $.get("/api/user_data").then(function(data) {
+$(document).ready(function () {
+  $.get("/api/user_data").then(function (data) {
     user = data.name
-    loginStatus= data.login
-  }).then(function(){
-    if (!loginStatus){
+    loginStatus = data.login
+  }).then(function () {
+    if (!loginStatus) {
       $(".voting").html("Please Login to vote")
     }
   })
-  $(".like").click(function(){
+  $(".like").on('click', function () {
+    if($(".like").attr("clicked")== 1){
+      return false
+    }
     let postLiked = $(this).attr("value")
-    let block = $(this).parent().closest('div')
-    console.log(block)
     $.ajax({
-        headers: {
-          "Content-Type": "application/json"
-        },
-        type: "POST",
-        url: "/api/like/"+ postLiked,
-      });
-    $(block).css("display","none")
-    $(".counter").css("display","block")
+      headers: {
+        "Content-Type": "application/json"
+      },
+      type: "POST",
+      url: "/api/like/" + postLiked,
+    });
+    $('.dislike').css("display", "none")
+    $('.like').attr("clicked", 1)
   });
 
-  $(".dislike").click(function () {
+  $(".dislike").on('click', function () {
+    if($(".dislike").attr("clicked")== 1){
+      return false
+    }
     let postDisLiked = $(this).attr("value")
-    let block = $(this).parent().closest('div')
-    console.log(block)
     $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -64,15 +60,15 @@ $(document).ready(function(){
       type: "POST",
       url: "/api/dislike/" + postDisLiked,
     });
-    $(block).css("display", "none")
-    $(".counter").css("display","block")
+    $('.like').css("display", "none")
+    $('.dislike').attr("clicked", 1)
   });
 })
 
 
 //API call when a user creates a new comment. Is called and posts to route
 var API = {
-  newComment: function(comment) {
+  newComment: function (comment) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -86,12 +82,9 @@ var API = {
 
 
 //on submit- make post object and put in SQL
-$("#submit").click(function(event) {
-
-  console.log("This is the user name" + user)
-  console.log("postID " + postId)
+$("#submit").click(function (event) {
   event.preventDefault();
-  if (!loginStatus){
+  if (!loginStatus) {
     modal.style.display = "block";
     return false;
   }
@@ -99,20 +92,17 @@ $("#submit").click(function(event) {
   var comment = {
     text: $description.val().trim(),
     PostId: postId,
-    name:user
+    name: user
   };
-  console.log(comment)
   if (!(comment.text)) {
     alert("Please enter text to comment")
     return;
   }
   ///Runs API call to MYSQL to place comment in database
-  API.newComment(comment).then(function(){
-    console.log("commented")
+  API.newComment(comment).then(function () {
     //reloads page and empties text boxes
     location.reload();
   })
   $description.val("");
 
 });
-
