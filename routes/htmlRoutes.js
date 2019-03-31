@@ -1,16 +1,8 @@
 var db = require("../models");
-var path = require("path");
 let user;
 var Fuse = require("fuse.js")
 // Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-function linkify(text) {
-  var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
-  return text.replace(urlRegex, function(url) {
-      return '<a class ="link-preview" href="' + url + '">' + url + '</a>';
-  });
-}
 
 module.exports = function(app) {
   // Default page loaded when arriving at site
@@ -129,8 +121,9 @@ module.exports = function(app) {
           for (i=0;i<responses[1].length;i++){
             commentInfo.push({
               //creates a tag links for any urls that are detected
-              text:linkify(responses[1][i].text),
-              name:responses[1][i].name
+              text:(responses[1][i].text),
+              name:responses[1][i].name,
+              createdAt:responses[1][i].createdAt
             })
           }
         }
@@ -141,7 +134,7 @@ module.exports = function(app) {
           post: {
             id: responses[0].id,
             name: responses[0].User.name,
-            description: linkify(responses[0].description),
+            description: (responses[0].description),
             text: responses[0].text,
             comment:commentInfo,
             createdAt:responses[0].createdAt
