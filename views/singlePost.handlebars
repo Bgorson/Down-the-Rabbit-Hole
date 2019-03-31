@@ -17,38 +17,40 @@
       {{>sideCategory}}
 
       {{!-- Show One Post. --}}
-      <div class="col-8">
+      <div class="col-8 offset-2">
         <h2 class="text-center topPost">For The Curious...</h2>
 
         <div class="container">
         <div class="card mt-4">
-          <h5 class="card-header">{{response.post.text}}</h5>
+          <h5 class="card-header">{{{linkify response.post.text}}}</h5>
           <div class="card-body">
-            <p class="card-text">{{{response.post.description}}}</p>
-            <p><strong>-</strong> {{response.post.name}} </p>
-        </div>  
-        </div>
-            </div>
-            <br>
-
+            <p class="card-text">{{{linkify response.post.description}}}</p>
+            <p><strong>Author: </strong> {{response.post.name}} </p>
+            <p>Posted: {{setTime response.post.createdAt}}</p>
+                        <div class = 'voting'>
+            <i class= "like fas fa-carrot fa-lg" value = '{{response.post.id}}'></i>
+             <i class= "hvr-sink dislike far fa-frown-open fa-lg" value = '{{response.post.id}}'></i>
+          </div>
+            <hr>
+            <p><strong>Comments:</strong></p>
             {{#each response.post.comment}}
-             <div class="comment-bubble">
-            <p> {{this.text}}</p>
-            <p>-{{this.name}}</p>
-            </div>
+            <p>{{this.name}}</p>
+            <p>Time: {{setTime this.createdAt}}</p>
+            {{!-- creates a tag links for any urls that are detected --}}
+            <p> {{{linkify this.text}}}</p>
             {{/each}}
+            
 
       
         
 
         {{!-- Enter Comment --}}
-<div id="myModal" class="modal">
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-               
-                  <a href="/login">Click here to Login</a>
-                </div>
-              </div>
+        <div id="myModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <a href="/login">Click here to Login</a>
+          </div>
+        </div>
 
         <form class="clearfix mb-4 mt-4" action="POST">
           <div class="form-group mb-4">
@@ -60,12 +62,14 @@
           <button id="submit" post="{{response.post.id}}" class="btn btn-primary float-right">Submit</button>
         </form>
       </div>
-
+      {{!-- End Show One Post --}}
     </div>
   </div>
   {{!-- End Body --}}
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- Microlink SDK Vanilla/UMD bundle -->
 <link rel="stylesheet" href="/styles/login.css" media="screen" title="no title" charset="utf-8">
+<link rel="stylesheet" href="/styles/sidenav.css" media="screen" title="no title" charset="utf-8">
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="/js/sidenav.js"></script>
 <script src="/js/comment.js"></script>
