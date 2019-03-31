@@ -50,6 +50,7 @@ $(document).ready(function(){
         url: "/api/like/"+ postLiked,
       });
     $(block).css("display","none")
+    $(".counter").css("display","block")
   });
 
   $(".dislike").click(function () {
@@ -64,6 +65,7 @@ $(document).ready(function(){
       url: "/api/dislike/" + postDisLiked,
     });
     $(block).css("display", "none")
+    $(".counter").css("display","block")
   });
 })
 

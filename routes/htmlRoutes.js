@@ -143,7 +143,8 @@ module.exports = function(app) {
             description: (responses[0].description),
             text: responses[0].text,
             comment:commentInfo,
-            createdAt:responses[0].createdAt
+            createdAt:responses[0].createdAt,
+            counter:responses[0].counter
           }
         }
         console.log(renderInfo);
