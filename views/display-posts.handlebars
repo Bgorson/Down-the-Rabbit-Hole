@@ -33,9 +33,9 @@
 
             <p>Created By:{{this.User.name}} </p>
             <p>Posted At: {{setTime this.createdAt}}</p>
-            <div class = 'voting'+ {{this.id}}>
-            <i class= "hvr-float like fas fa-carrot fa-lg" value = '{{this.id}}'></i>
-             <i class= "hvr-sink dislike far fa-frown-open fa-lg" value = '{{this.id}}'></i>
+
+          <div class = "counter">
+            <p>Popularity: {{this.counter}}</p>
           </div>
           </div>
         </div>

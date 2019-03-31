@@ -1,4 +1,9 @@
 /* The Modal (background) */
+.like, .dislike{
+  cursor: pointer;
+  margin-right:5px;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

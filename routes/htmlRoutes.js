@@ -16,7 +16,7 @@ module.exports = function(app) {
       attributes: [
         "id", "text",
         // limit description to 150 chars
-        [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"]
+        [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"],"counter"
       ],
       include: [{ model: db.User }],
       order: [
