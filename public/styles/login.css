@@ -1,4 +1,21 @@
 /* The Modal (background) */
+.like, .dislike{
+  cursor: pointer;
+  margin-right:5px;
+}
+
+.like:hover {
+  color:orange;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transform: scale(1.1);
+  transform: scale(2.1);
+}
+.dislike:hover {
+  color:red;
+}
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -35,3 +52,4 @@
     text-decoration: none;
     cursor: pointer;
   }
+  
