@@ -24,11 +24,11 @@
         {{#each posts}}
           <div class="speech-bubble">
           {{!-- Title as card header --}}
-          <a class = "hvr-radial-out" href="/post/{{this.id}}"><h5 class="card-header">{{this.text}}</h5></a>
+          <a class = "hvr-radial-out" style= "width:100%" href="/post/{{this.id}}"><h5 class="card-header">{{this.text}}</h5></a>
           <div class="card-body">
 
             {{!-- Limit Post Content --}}
-            <p class="card-text post-content"
+            <p style= "overflow-wrap:break-word" class="card-text post-content"
               value="{{this.id}}">{{this.description}}</p>
 
             <p>Created By:{{this.User.name}} </p>
