@@ -25,15 +25,15 @@
             <h5 class="card-header">{{{linkify response.post.text}}}</h5>
             <div class="card-body">
               <p class="card-text">{{{linkify response.post.description}}}</p>
-              <p><strong>Author: </strong> {{response.post.name}} </p>
-              <p>Posted: {{setTime response.post.createdAt}}</p>
-              <div class='voting'>
+              <p class="small-text"><strong>Author: </strong> {{response.post.name}} </p>
+              <p class="small-text">Posted: {{setTime response.post.createdAt}}</p>
+              <div class="voting red-text">
                 <i class="like fas fa-carrot fa-lg" value='{{response.post.id}}'></i>
                 <i class="hvr-sink dislike far fa-frown-open fa-lg" value='{{response.post.id}}'></i>
               </div>
             </div>
           </div>
-          
+
 
 
   {{!-- Comments --}}
