@@ -22,7 +22,7 @@
         <h2 class="text-center topPost">Trending Posts</h2>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
-        <div class="card mt-4">
+          <div class="speech-bubble">
           {{!-- Title as card header --}}
           <a class = "hvr-radial-out" href="/post/{{this.id}}"><h5 class="card-header">{{this.text}}</h5></a>
           <div class="card-body">
@@ -40,12 +40,18 @@
           </div>
         </div>
         {{/each}}
+      
+</div>
+      
+</div>
       </div>
       {{!-- End Show All Posts --}}
 
     </div>
   </div>
   {{!-- End Body --}}
+  
+
 </div>
 
 

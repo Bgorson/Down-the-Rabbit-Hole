@@ -1,0 +1,50 @@
+/* Profile Page */
+@import url("https://fonts.googleapis.com/css?family=Abel");
+
+.cardBg {
+  background-color :#f0f8ff;
+}
+.cardDarkBg {
+  background-color: #cce7ff;
+}
+.btnBg {
+  background-color: #0088ff;
+}
+* {
+  font-family: "Abel", sans-serif;
+}
+.contactButton {
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 100%;
+  z-index: 2;
+  color:#0088ff;
+  width: 145px;
+  height: 38px;
+  transition: all ease 0.35s;
+  overflow: hidden;
+}
+.contactButton .infoIcon {
+  display: none;
+}
+.contactButton[aria-expanded=true] {
+  left: 90%;
+  transform: translate(-90%, -50%);
+  width: 52px;
+  height: 52px;
+}
+.contactButton[aria-expanded=true] .infoText {
+  display: none;
+}
+.contactButton[aria-expanded=true] .infoIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  order: 1;
+  height: 30px;
+  width: 30px;
+}
+.card-body {
+    width: 200%;
+}
