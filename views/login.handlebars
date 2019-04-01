@@ -1,35 +1,33 @@
+<div>
+  <div id="login">
+    <div class="container text-center">
+      <div class="card mb-5">
+        <div class="card-body">
+          <form class="form-signin">
+            {{!-- Login Post Form --}}
+            <a href="/"><img class="bunny" width="120" height="120" src="/images/rabbit.png"></a>
+            <h1 class="mb-5 signin">Sign in</h1>
+            <label for="inputEmail" class="sr-only">Email Address</label>
+            <input type="email" id="inputEmail" class="form-control mb-3" placeholder="Email Address" required />
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password" id="inputPassword" class="form-control mb-3" placeholder="Password" required />
+            <br>
+            <button class="btn btn-lg btn-primary mr-2" id="submit" type="submit">Sign in</button>
+            <button class="btn btn-lg btn-secondary ml-2" id="createAccount">Create Login here</button>
+          </form>
 
- <div>
-    <div id="login">
-      <div class="container text-center">
-        <div class="card mb-5">
-          <div class="card-body">
-            <form class="form-signin">
-              <a href="/"><img class="bunny" width="120" height="120" src="/images/rabbit.png"></a>
-              <h1 class="mb-5 signin">Sign in</h1>
-
-              <div id="myModal" class="modal">
-                <div class="modal-content">
-                  <span class="close">&times;</span>
-                  <p>Please check your Username/Password</p>
-                </div>
-              </div>
-
-              <label for="inputEmail" class="sr-only">Email Address</label>
-              <input type="email" id="inputEmail" class="form-control mb-3"
-                placeholder="Email Address" required/>
-              <label for="inputPassword" class="sr-only">Password</label>
-              <input type="password" id="inputPassword" class="form-control mb-3"
-                placeholder="Password" required/>
-              <br>
-              <button class="btn btn-lg btn-primary mr-2" id= "submit" type="submit">Sign in</button>
-              <button class="btn btn-lg btn-secondary ml-2" id = "createAccount">Create Login here</button>
-            </form>
+          {{!-- Modal --}}
+          <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <p>Please check your Username/Password</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 

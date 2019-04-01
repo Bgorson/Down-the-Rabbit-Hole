@@ -1,41 +1,42 @@
- <div class="nav">
-   {{>miniNav}}
- </div>
- <br><br><br><br>
-  <div class="container">
-    <div class="card">
-      <div class="card-header text-center">
-         <a href="/"><img class="bunny" width="120" height="120" src="/images/rabbit.png"></a>
-        <h2 class="createAccount">Create an account</h2>
-      </div>
-        <div>
-          <p id= "duplicate" style= "display:none">This email is already registered. </p>
-        </div>
-        <div class="card-body">
-        <form class="signup">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="email-input" placeholder="Email">
-          </div>
-           <div class="form-group">
-            <label for="userName">User Name</label>
-            <input type="text" class="form-control" id="text-input" placeholder="Username">
-          </div>
-          
-          <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="password-input" placeholder="Password">
-          </div> 
-          <div style="display: none" id="alert" class="alert alert-danger" role="alert">
-            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-            <span class="sr-only">Error:</span> <span class="msg"></span>
-          </div>
-          <button type="submit" class="btn btn-secondary">Sign Up</button>
-        </form>
-        <br />
-        <p>Or log in <a href="/login">here</a></p>
-        </div>
-      </div>
+<div class="nav">
+  {{>miniNav}}
+</div>
+<br><br><br><br>
+{{!-- Signup Card --}}
+<div class="container">
+  <div class="card">
+    <div class="card-header text-center">
+      <a href="/"><img class="bunny" width="120" height="120" src="/images/rabbit.png"></a>
+      <h2 class="createAccount">Create an account</h2>
     </div>
+    <div>
+      <p id="duplicate" style="display:none">This email is already registered. </p>
+    </div>
+    <div class="card-body">
+      <form class="signup">
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="email-input" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="userName">User Name</label>
+          <input type="text" class="form-control" id="text-input" placeholder="Username">
+        </div>
 
-    <script type="text/javascript" src="js/signup.js"></script>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="password-input" placeholder="Password">
+        </div>
+        <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span> <span class="msg"></span>
+        </div>
+        <button type="submit" class="btn btn-secondary">Sign Up</button>
+      </form>
+      <br />
+      <p>Or log in <a href="/login">here</a></p>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="js/signup.js"></script>

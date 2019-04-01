@@ -33,17 +33,17 @@
               </div>
             </div>
           </div>
-          
 
 
-  {{!-- Comments --}}
+
+          {{!-- Comments --}}
           {{#each response.post.comment}}
           <div class="comment-bubble tri-right border round btm-left-in">
-              <p>{{this.name}}</p>
-              <p>Posted: {{setTime this.createdAt}}</p>
-              <p style= "overflow-wrap:break-word" > {{{linkify this.text}}}</p>
+            <p>{{this.name}}</p>
+            <p>Posted: {{setTime this.createdAt}}</p>
+            <p style="overflow-wrap:break-word"> {{{linkify this.text}}}</p>
           </div>
-            {{/each}}
+          {{/each}}
 
 
           {{!-- Enter Comment --}}
@@ -67,11 +67,11 @@
         </div>
         {{!-- End Show One Post --}}
 
-      {{!-- End Body --}}
+        {{!-- End Body --}}
 
-      <link rel="stylesheet" href="/styles/login.css" media="screen" title="no title" charset="utf-8">
-      <link rel="stylesheet" href="/styles/sidenav.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/styles/login.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/styles/sidenav.css" media="screen" title="no title" charset="utf-8">
 
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="/js/sidenav.js"></script>
-      <script src="/js/comment.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="/js/sidenav.js"></script>
+        <script src="/js/comment.js"></script>
