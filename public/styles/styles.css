@@ -57,6 +57,9 @@ body {
 .speech-bubble:hover, .speech-bubble:focus, .speech-bubble:active {
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
 }
+.postCard{
+  margin-bottom: 25px;
+}
 .comment-bubble {
   background:	#D3D3D3;
   opacity: 0.7;
@@ -68,6 +71,8 @@ body {
   max-width: 400px;
   padding: 15px;
   position: relative;
+  padding-top: 20px;
+  margin-top: 10px;
 }
 .comment-bubble p {
   margin: 0 0 10px;
