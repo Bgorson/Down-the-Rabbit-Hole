@@ -27,7 +27,7 @@ app.engine(
     defaultLayout: "main",
     helpers:{
       setTime: function(time) {
-        return moment(time).format("dddd, MMMM Do YYYY, h:mm:ss a");
+        return moment(time).subtract(6,'hours').format("dddd, MMMM Do YYYY, h:mm:ss a");
       },
       linkify: function linkify(text) {
         var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
