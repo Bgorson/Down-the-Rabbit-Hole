@@ -1,82 +1,62 @@
-
+{{!-- This page is still under production --}}
 <div class="nav">
-    {{>nav}}
+  {{>nav}}
 </div>
 <br><br><br>
 
-     <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <div class="card mt-5 border-0 bg-transparent">
-          <div class="card-body">
-            <div class="position-relative cardBg p-3 pb-4">
-              <div class="d-flex align-items-center">
-                <div>
-                  <img
-                    src="{{User.img}}"
-                    width="200px"
-                    class="img-fluid p-2"
-                  />
-                </div>
-                <div class="ml-3">
-                  <div class="name h2">{{User.name}}</div>
-                  <div class="email">
-                      {{User.email}}
-                  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mt-5 border-0 bg-transparent">
+        <div class="card-body">
+          <div class="position-relative cardBg p-3 pb-4">
+            <div class="d-flex align-items-center">
+              <div>
+                <img src="{{User.img}}" width="200px" class="img-fluid p-2" />
+              </div>
+              <div class="ml-3">
+                <div class="name h2">{{User.name}}</div>
+                <div class="email">
+                  {{User.email}}
                 </div>
               </div>
-              <button
-                class="d-flex btn btn-primary rounded-pill contactButton justify-content-center"
-                data-toggle="collapse"
-                data-target="#contactInfo"
-              >
-                <span class="infoText"> Contact Me</span>
-                <span class="h5 mb-0"
-                  ><i class="fa fa-chevron-up"></i
-                ></span>
-              </button>
             </div>
-            <div class="collapse" id="contactInfo">
-              <div class="p-3 cardDarkBg text-uppercase">Contact Me</div>
-              <ul class="list-unstyled">
-                <li>
-                  <a
-                    href="{{User.fb}}"
-                    class="d-flex bg-white p-3 mt-2 align-items-center card-link"
-                  >
-                    <span class="facebook"
-                      ><i class="fab fa-facebook-square"></i>
-                    </span>
-                    <span class="ml-2">Facebook</span>
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="{{User.tw}}"
-                    class="d-flex bg-white p-3 mt-2 align-items-center card-link"
-                  >
-                    <span class="twitter">
-                     <i class="fab fa-twitter"></i>
-                    </span>
-                    <span class="ml-2">Twitter</span></a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="{{User.ig}}"
-                    class="d-flex bg-white p-3 mt-2 align-items-center card-link"
-                  >
-                    <span class="instagram">
-                     <i class="fab fa-instagram"></i>
-                    </span>
-                    <span class="ml-2">Instagram</span>
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <button class="d-flex btn btn-primary rounded-pill contactButton justify-content-center"
+              data-toggle="collapse" data-target="#contactInfo">
+              <span class="infoText"> Contact Me</span>
+              <span class="h5 mb-0"><i class="fa fa-chevron-up"></i></span>
+            </button>
+          </div>
+          <div class="collapse" id="contactInfo">
+            <div class="p-3 cardDarkBg text-uppercase">Contact Me</div>
+            <ul class="list-unstyled">
+              <li>
+                <a href="{{User.fb}}" class="d-flex bg-white p-3 mt-2 align-items-center card-link">
+                  <span class="facebook"><i class="fab fa-facebook-square"></i>
+                  </span>
+                  <span class="ml-2">Facebook</span>
+                </a>
+              </li>
+              <li>
+                <a href="{{User.tw}}" class="d-flex bg-white p-3 mt-2 align-items-center card-link">
+                  <span class="twitter">
+                    <i class="fab fa-twitter"></i>
+                  </span>
+                  <span class="ml-2">Twitter</span></a>
+              </li>
+              <li>
+                <a href="{{User.ig}}" class="d-flex bg-white p-3 mt-2 align-items-center card-link">
+                  <span class="instagram">
+                    <i class="fab fa-instagram"></i>
+                  </span>
+                  <span class="ml-2">Instagram</span>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-        <link rel="stylesheet" href="styles/profile.css">
+</div>
+<link rel="stylesheet" href="styles/profile.css">

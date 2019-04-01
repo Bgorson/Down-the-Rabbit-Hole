@@ -1,7 +1,6 @@
-
 {{!-- NAV PARTIAL --}}
 <div class="nav">
-{{>nav}}
+  {{>nav}}
 </div>
 <br><br>
 
@@ -22,35 +21,37 @@
         <h2 class="text-center topPost">Trending Posts</h2>
         {{!-- Iterate through 'posts' data item. --}}
         {{#each posts}}
-          <div class="speech-bubble">
+        <div class="speech-bubble">
           {{!-- Title as card header --}}
-          <a class = "hvr-radial-out" style= "width:100%" href="/post/{{this.id}}"><h5 class="card-header">{{this.text}}</h5></a>
+          <a class="hvr-radial-out" style="width:100%" href="/post/{{this.id}}">
+            <h5 class="card-header">{{this.text}}</h5>
+          </a>
           <div class="card-body">
 
             {{!-- Limit Post Content --}}
-            <p style= "overflow-wrap:break-word" class="card-text post-content"
-              value="{{this.id}}">{{this.description}}</p>
+            <p style="overflow-wrap:break-word" class="card-text post-content" value="{{this.id}}">{{this.description}}
+            </p>
 
             <p>Created By:{{this.User.name}} </p>
             <p>Posted At: {{setTime this.createdAt}}</p>
 
-          <div class = "counter">
-            <p>Popularity: {{this.counter}}</p>
-          </div>
+            <div class="counter">
+              <p>Popularity: {{this.counter}}</p>
+            </div>
           </div>
         </div>
         {{/each}}
-      
-</div>
-      
-</div>
+
       </div>
-      {{!-- End Show All Posts --}}
 
     </div>
   </div>
-  {{!-- End Body --}}
-  
+  {{!-- End Show All Posts --}}
+
+</div>
+</div>
+{{!-- End Body --}}
+
 
 </div>
 

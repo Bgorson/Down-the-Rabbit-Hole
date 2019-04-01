@@ -1,9 +1,9 @@
 require("dotenv").config();
 var express = require("express");
-var session = require("express-session")
+var session = require("express-session");
 var exphbs = require("express-handlebars");
 var passport = require("./config/passport");
-var moment = require('moment');
+var moment = require("moment");
 
 var db = require("./models");
 
@@ -16,7 +16,9 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // We need to use sessions to keep track of our user's login status
-app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -25,14 +27,22 @@ app.engine(
   "handlebars",
   exphbs({
     defaultLayout: "main",
-    helpers:{
+    helpers: {
       setTime: function(time) {
-        return moment(time).subtract(6,'hours').format("dddd, MMMM Do YYYY, h:mm:ss a");
+        return moment(time)
+          .subtract(6, "hours")
+          .format("dddd, MMMM Do YYYY, h:mm:ss a");
       },
       linkify: function linkify(text) {
-        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        var urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/gi;
         return text.replace(urlRegex, function(url) {
-            return '<a class ="link-preview" href="' + url + '" target= "_blank">' + url + '</a>';
+          return (
+            '<a class ="link-preview" href="' +
+            url +
+            '" target= "_blank">' +
+            url +
+            "</a>"
+          );
         });
       }
     }
@@ -62,13 +72,3 @@ db.sequelize.sync(syncOptions).then(function() {
     );
   });
 });
-
-
-// {
-//   "development": {
-//   "username": "b2d8052a5cc13c",
-//   "password": "14c8247c",
-//   "database": "heroku_cd0896e944c1168",
-//   "host": "us-cdbr-iron-east-03.cleardb.net",
-//   "dialect": "mysql"
-// },

@@ -38,7 +38,7 @@ body {
 #toggle-wrapper.toggled #sidebar-wrapper {
   width: 0;
 }
-#toggle-wrapper.toggled{
+#toggle-wrapper.toggled {
   position: absolute;
 }
 
@@ -83,7 +83,6 @@ body {
   color: #fff;
   background: none;
 }
-
 
 /* ----------------------------
  Media Responsive

@@ -121,7 +121,7 @@ $("#submit").click(function (event) {
 });
 
 
-
+// Generate random color for comments
 $(function() {
   $(".comment-bubble").each(function() {
       var hue = 'rgb(' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ',' + (Math.floor((256-199)*Math.random()) + 200) + ')';
