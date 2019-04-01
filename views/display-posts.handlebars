@@ -32,11 +32,11 @@
             <p style="overflow-wrap:break-word" class="card-text post-content" value="{{this.id}}">{{this.description}}
             </p>
 
-            <p>Created By:{{this.User.name}} </p>
-            <p>Posted At: {{setTime this.createdAt}}</p>
+            <p class="small-text">Created By:  {{this.User.name}} </p>
+            <p class="small-text">Posted At:  {{setTime this.createdAt}}</p>
 
-            <div class="counter">
-              <p>Popularity: {{this.counter}}</p>
+            <div class = "counter">
+              <p class="small-text">Popularity:  {{this.counter}}</p>
             </div>
           </div>
         </div>
@@ -46,11 +46,7 @@
 
     </div>
   </div>
-  {{!-- End Show All Posts --}}
-
-</div>
-</div>
-{{!-- End Body --}}
+  {{!-- End Body --}}
 
 
 </div>

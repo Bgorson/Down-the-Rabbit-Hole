@@ -165,6 +165,13 @@ p {
   color: #000;
 }
 
+p.small-text {
+  font-size: 0.8rem;
+}
+.red-text {
+  color: rgba(184, 3, 42, 0.8);
+}
+
 .morelink {
   color: rgba(31, 79, 236, 0.8);
 }
