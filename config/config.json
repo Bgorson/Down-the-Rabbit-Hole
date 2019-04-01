@@ -8,7 +8,7 @@
   },
   "development": {
     "username": "root",
-    "password": "fenrir32",
+    "password": null,
     "database": "projectTwo",
     "host": "localhost",
     "dialect": "mysql",
