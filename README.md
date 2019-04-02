@@ -28,6 +28,7 @@ Down the Rabbit Hole
 * Sequilize
 * Moment.js
 * Bcrypt
+* FlatIcon
 
 Team Members
 ------------
