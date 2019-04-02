@@ -12,9 +12,9 @@ module.exports = function (app) {
     }
     let allPosts = db.Post.findAll({
       attributes: [
-        "id", "text",
+        "id", "text", "createdAt", "counter",
         // limit description to 150 chars
-        [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"], "counter"
+        [db.sequelize.fn("LEFT", db.sequelize.col("description"), 151), "description"]
       ],
       include: [{
         model: db.User
@@ -119,7 +119,7 @@ module.exports = function (app) {
     res.render("profile");
   });
 
-  // 
+  //
   // app.get("/profile/:user", function(req, res) {
   //   const profileQuery = req.params.user
   //   const profileData = db.Users.findOne({
