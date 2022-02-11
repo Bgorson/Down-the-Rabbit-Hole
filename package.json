@@ -16,7 +16,7 @@
     "dotenv": "^6.2.0",
     "eslint-plugin-prettier": "^3.0.1",
     "express": "^4.16.3",
-    "express-handlebars": "^3.0.0",
+    "express-handlebars": "^5.3.1",
     "express-session": "^1.15.6",
     "fuse.js": "^3.4.4",
     "moment": "^2.24.0",
